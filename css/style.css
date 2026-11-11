@@ -1,0 +1,236 @@
+/* ============ Grundlagen ============ */
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: hidden; }
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: #f4f4f0;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+/* ============ Navigation (seriöse Firmenleiste) ============ */
+.topbar {
+  background: #0b2a4a;
+  color: #fff;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 8px; padding: 10px 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative; z-index: 10;
+}
+.topbar .logo { font-weight: bold; letter-spacing: 2px; text-decoration: none; font-size: 15px; }
+.topbar .logo small { font-weight: normal; opacity: .7; letter-spacing: 0; }
+.topbar nav { display: flex; flex-wrap: wrap; gap: 4px; }
+.topbar nav a {
+  text-decoration: none; padding: 6px 10px; font-size: 14px; border-radius: 2px;
+}
+.topbar nav a:hover, .topbar nav a.aktiv { background: #fff; color: #0b2a4a; }
+.topbar nav a:nth-child(2):hover { transform: rotate(-4deg); background: #ff0; }
+.topbar nav a:nth-child(3):hover { transform: rotate(3deg) scale(1.1); background: #f0f; color: #fff; }
+.topbar nav a:nth-child(4):hover { transform: skew(-10deg); background: #0f0; }
+
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+
+footer.fuss {
+  text-align: center; font-family: Arial, sans-serif; font-size: 12px;
+  padding: 30px 16px; color: #666;
+}
+footer.fuss .klein { font-size: 9px; }
+
+/* ============ STARTSEITE: seriös → Chaos ============ */
+.memo {
+  background: #fff; border: 1px solid #ccc; margin: 32px auto; padding: 32px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08); position: relative;
+}
+.memo .kopf { font-family: Arial, sans-serif; font-size: 12px; color: #555; border-bottom: 2px solid #0b2a4a; padding-bottom: 10px; margin-bottom: 20px; display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; }
+.memo .kopf b { color: #0b2a4a; }
+.memo h1 { font-size: 28px; margin: 0 0 12px; color: #0b2a4a; font-weight: normal; }
+.memo p { margin: 0 0 12px; }
+.stempel {
+  position: absolute; top: 24px; right: 20px;
+  border: 4px solid #c00; color: #c00; padding: 4px 12px;
+  font: bold 22px "Courier New", monospace; transform: rotate(12deg);
+  opacity: .8; letter-spacing: 3px;
+}
+
+.bruch {
+  font-family: "Comic Neue", "Comic Sans MS", cursive;
+  font-size: 22px; text-align: center; margin: 40px 0 10px; color: #c00;
+  transform: rotate(-2deg);
+}
+.chaos {
+  background:
+    repeating-linear-gradient(45deg, #ff0 0 20px, #000 20px 40px);
+  padding: 8px; margin: 0 -16px;
+}
+.chaos-inner {
+  background: #ff00cc; color: #fff; padding: 30px 16px; text-align: center;
+  font-family: "Bangers", Impact, sans-serif; letter-spacing: 2px;
+}
+.chaos-inner h2 { font-size: clamp(36px, 9vw, 80px); margin: 0; text-shadow: 4px 4px 0 #000, -2px -2px 0 #0ff; animation: wackel 1.2s infinite; }
+.chaos-inner p { font-family: "Comic Neue", "Comic Sans MS", cursive; font-size: 20px; letter-spacing: 0; }
+.knopf {
+  display: inline-block; background: #0f0; color: #000; border: 4px solid #000;
+  padding: 12px 22px; font: 26px "Bangers", Impact, sans-serif; letter-spacing: 2px;
+  text-decoration: none; box-shadow: 6px 6px 0 #000; transform: rotate(-3deg);
+  transition: transform .1s;
+}
+.knopf:hover { transform: rotate(3deg) scale(1.1); background: #ff0; }
+
+.kacheln { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin: 40px 0; }
+.kachel {
+  background: #fff; border: 3px solid #000; padding: 18px; text-decoration: none;
+  font-family: "Comic Neue", "Comic Sans MS", cursive; box-shadow: 8px 8px 0 #000;
+  transition: transform .15s;
+}
+.kachel:nth-child(1) { transform: rotate(-2deg); background: #9ff; }
+.kachel:nth-child(2) { transform: rotate(1.5deg); background: #ff9; }
+.kachel:nth-child(3) { transform: rotate(-1deg); background: #f9f; }
+.kachel:hover { transform: rotate(0) scale(1.05); }
+.kachel h3 { font-family: "Bangers", Impact, sans-serif; font-size: 30px; margin: 0 0 6px; letter-spacing: 1px; }
+
+.laufband {
+  background: #000; color: #0f0; font: bold 18px "Courier New", monospace;
+  white-space: nowrap; overflow: hidden; padding: 8px 0;
+}
+.laufband span { display: inline-block; padding-left: 100%; animation: lauf 22s linear infinite; }
+
+.sticker {
+  position: absolute; z-index: 5; pointer-events: none;
+  font: 22px "Bangers", Impact, sans-serif; padding: 6px 12px; border: 3px solid #000;
+  box-shadow: 4px 4px 0 #000; white-space: nowrap;
+}
+
+@keyframes wackel { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg) scale(1.04); } }
+@keyframes lauf { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+@keyframes blink { 50% { opacity: 0; } }
+.blink { animation: blink 1s steps(1) infinite; }
+
+/* ============ NEWS: Nachrichtenstudio ============ */
+body.news {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(80,160,255,.35), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 40px),
+    linear-gradient(180deg, #021a3d, #00081a);
+  background-attachment: fixed;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.studio-kopf { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 28px 0 10px; }
+.sender {
+  display: flex; align-items: center; gap: 12px;
+}
+.sender .kreis {
+  width: 58px; height: 58px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #6cf, #036 70%);
+  display: grid; place-items: center; font-weight: bold; font-size: 18px;
+  box-shadow: 0 0 20px rgba(100,200,255,.6);
+}
+.sender h1 { margin: 0; font-size: clamp(26px, 6vw, 42px); letter-spacing: 1px; }
+.sender h1 span { font-weight: normal; opacity: .75; }
+.uhr { font: bold 32px "Courier New", monospace; background: rgba(255,255,255,.08); padding: 6px 14px; border-radius: 4px; }
+
+.meldung {
+  background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.12);
+  margin: 26px 0; display: grid; grid-template-columns: 300px 1fr; overflow: hidden;
+}
+.meldung img { width: 100%; height: 100%; object-fit: cover; background: #fffef5; }
+.meldung .inhalt { padding: 0 0 18px; }
+.bauchbinde { display: flex; flex-wrap: wrap; }
+.bauchbinde .rubrik { background: #d00; padding: 6px 12px; font-weight: bold; letter-spacing: 1px; }
+.bauchbinde .datum { background: #fff; color: #021a3d; padding: 6px 12px; font-weight: bold; }
+.meldung h2 { margin: 14px 18px 2px; font-size: 26px; }
+.meldung .unter { margin: 0 18px 10px; color: #9cf; font-style: italic; }
+.meldung p { margin: 0 18px 8px; }
+
+.ticker {
+  position: sticky; bottom: 0; display: flex; background: #fff; color: #021a3d; font-weight: bold; z-index: 20;
+}
+.ticker .label { background: #d00; color: #fff; padding: 8px 12px; flex-shrink: 0; }
+.ticker .lauf { overflow: hidden; white-space: nowrap; padding: 8px 0; flex: 1; }
+.ticker .lauf span { display: inline-block; padding-left: 100%; animation: lauf 30s linear infinite; }
+
+/* ============ EVENTS: Party mit Flammen & Ballons ============ */
+body.party {
+  background: radial-gradient(circle at 50% 30%, #3a0000, #000 75%);
+  color: #fff;
+  font-family: "Comic Neue", "Comic Sans MS", cursive;
+  min-height: 100vh;
+}
+.einladung {
+  position: relative; z-index: 3; text-align: center;
+  margin: 40px auto 160px; padding: 30px 16px; max-width: 760px;
+  border: 6px dashed #ff0; background: rgba(0,0,0,.6);
+  box-shadow: 0 0 60px #f60, inset 0 0 40px #f30;
+}
+.einladung .vorspann { font-size: 18px; color: #ffb; }
+.einladung h1 {
+  font: clamp(48px, 13vw, 110px)/1 "Bangers", Impact, sans-serif; margin: 10px 0; letter-spacing: 3px;
+  background: linear-gradient(0deg, #ff0, #f80, #f00); -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 12px #f50); animation: wackel .9s infinite;
+}
+.fakten { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 24px 0; }
+.fakt { background: #ff0; color: #000; border: 4px solid #000; padding: 12px; font-size: 22px; font-weight: bold; box-shadow: 5px 5px 0 #f00; }
+.fakt:nth-child(1) { transform: rotate(-3deg); }
+.fakt:nth-child(2) { transform: rotate(2deg); background: #0ff; }
+.fakt:nth-child(3) { transform: rotate(-1deg); background: #f0f; color: #fff; }
+.fakt small { display: block; font-size: 13px; font-weight: normal; }
+.countdown { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+.countdown div { background: #000; border: 3px solid #f60; padding: 10px 14px; min-width: 80px; }
+.countdown b { display: block; font: 44px "Bangers", Impact, sans-serif; color: #ff0; }
+.einladung .text { font-size: 19px; max-width: 560px; margin: 0 auto 14px; }
+
+/* Flammen am unteren Rand */
+.flammen { position: fixed; left: 0; right: 0; bottom: 0; height: 140px; z-index: 2; pointer-events: none; display: flex; justify-content: space-between; }
+.flamme {
+  width: 70px; height: 130px; margin-top: auto; position: relative;
+  border-radius: 50% 50% 20% 20% / 70% 70% 30% 30%;
+  background: radial-gradient(ellipse at 50% 85%, #fff 0%, #ff0 20%, #f80 45%, #f00 70%, transparent 72%);
+  filter: blur(2px); transform-origin: 50% 100%;
+  animation: flackern .5s infinite alternate;
+  mix-blend-mode: screen;
+}
+.flamme:nth-child(odd) { height: 100px; animation-duration: .4s; }
+.flamme:nth-child(3n) { height: 150px; animation-duration: .65s; }
+@keyframes flackern {
+  0% { transform: scaleY(1) scaleX(1) rotate(-2deg); opacity: .9; }
+  100% { transform: scaleY(1.2) scaleX(.85) rotate(3deg); opacity: 1; }
+}
+.seiten-feuer { position: fixed; top: 0; bottom: 0; width: 40px; z-index: 1; font-size: 30px; display: flex; flex-direction: column; justify-content: space-around; pointer-events: none; }
+.seiten-feuer.links { left: 2px; } .seiten-feuer.rechts { right: 2px; }
+.seiten-feuer span { animation: wackel .6s infinite; }
+
+/* Ballons */
+.ballon { position: fixed; bottom: -160px; z-index: 1; pointer-events: none; animation: steigen linear forwards; }
+@keyframes steigen {
+  0% { transform: translateY(0) translateX(0) rotate(-5deg); }
+  50% { transform: translateY(-60vh) translateX(30px) rotate(5deg); }
+  100% { transform: translateY(-130vh) translateX(-20px) rotate(-5deg); }
+}
+
+/* ============ GAMES ============ */
+body.games { background: #111 repeating-linear-gradient(90deg, #1a1a1a 0 2px, transparent 2px 60px); color: #fff; font-family: "Courier New", monospace; }
+.baustelle { text-align: center; padding: 40px 0 10px; }
+.baustelle h1 { font: clamp(40px, 10vw, 80px) "Bangers", Impact, sans-serif; color: #ff0; margin: 0; letter-spacing: 3px; }
+.absperrband { background: repeating-linear-gradient(45deg, #ff0 0 24px, #000 24px 48px); height: 24px; margin: 10px -16px; }
+.rangliste { background: #000; border: 3px solid #0f0; margin: 26px 0; padding: 16px; }
+.rangliste h2 { color: #0f0; margin: 0 0 10px; }
+.rangliste table { width: 100%; border-collapse: collapse; font-size: 18px; }
+.rangliste td { padding: 6px 4px; border-bottom: 1px dashed #333; }
+.rangliste td:last-child { text-align: right; color: #ff0; }
+
+/* ============ Handy ============ */
+@media (max-width: 640px) {
+  .memo { padding: 20px 16px; }
+  .stempel { position: static; display: inline-block; margin-bottom: 10px; font-size: 16px; }
+  .meldung { grid-template-columns: 1fr; }
+  .meldung img { max-height: 260px; }
+  .flamme { width: 44px; }
+  .seiten-feuer { display: none; }
+  .uhr { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; }
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <rect width="300" height="300" fill="#fffef5"/>
+  <g fill="none" stroke="#111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Stuhl über dem Kopf (leicht schief, weil chaotisch) -->
+    <g transform="rotate(-8 150 60)">
+      <line x1="95" y1="70" x2="205" y2="70"/>          <!-- Sitzfläche -->
+      <line x1="200" y1="70" x2="205" y2="15"/>         <!-- Lehne -->
+      <line x1="160" y1="22" x2="205" y2="22"/>         <!-- Lehnenquerstrebe -->
+      <line x1="105" y1="70" x2="100" y2="110"/>        <!-- Stuhlbein -->
+      <line x1="195" y1="70" x2="200" y2="110"/>        <!-- Stuhlbein -->
+    </g>
+    <!-- Kopf -->
+    <circle cx="150" cy="135" r="20"/>
+    <!-- Gesicht: sehr stolz -->
+    <circle cx="143" cy="131" r="1.5" fill="#111"/>
+    <circle cx="157" cy="131" r="1.5" fill="#111"/>
+    <path d="M141 141 Q150 149 159 141"/>
+    <!-- Körper -->
+    <line x1="150" y1="155" x2="150" y2="225"/>
+    <!-- Arme hoch zum Stuhl -->
+    <line x1="150" y1="170" x2="112" y2="112"/>
+    <line x1="150" y1="170" x2="190" y2="108"/>
+    <!-- Beine -->
+    <line x1="150" y1="225" x2="122" y2="280"/>
+    <line x1="150" y1="225" x2="178" y2="280"/>
+  </g>
+  <!-- Schweißtropfen -->
+  <path d="M182 128 q4 8 0 10 q-4 -2 0 -10z" fill="#3aa0ff"/>
+  <text x="150" y="296" text-anchor="middle" font-family="Comic Sans MS, Comic Neue, cursive" font-size="14" fill="#c00">PLATZHALTER</text>
+</svg>
