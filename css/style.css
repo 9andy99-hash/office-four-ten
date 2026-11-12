@@ -239,3 +239,12 @@ body.games { background: #111 repeating-linear-gradient(90deg, #1a1a1a 0 2px, tr
 @media (prefers-reduced-motion: reduce) {
   .praank-overlay, .praank-overlay.an { display: none !important; animation: none !important; }
 }
+
+/* Schwein-Einlage */
+.schwein-zone { position: relative; height: 80px; overflow: hidden; }
+.schwein { position: absolute; top: 10px; left: -80px; font-size: 56px; animation: schwein-lauf 6s linear infinite; }
+.schwein-text { text-align: center; font-family: 'Comic Neue', cursive; font-weight: 700; }
+@keyframes schwein-lauf { 0% { left: -80px; transform: scaleX(1); } 49% { left: calc(100% + 20px); transform: scaleX(1); } 50% { left: calc(100% + 20px); transform: scaleX(-1); } 99% { left: -80px; transform: scaleX(-1); } 100% { left: -80px; transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .schwein { animation: none; left: 50%; margin-left: -28px; }
+}
