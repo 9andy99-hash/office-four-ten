@@ -23,34 +23,28 @@
   </header>
 
   <main class="wrap">
-    <h1 class="boulder-titel">BOULDER-ABTEILUNG</h1>
-    <p>&gt; Offizielle Witzsammlung der Kletterfraktion (ohne Seil, ohne Gewähr):</p>
-
-    <div class="boulder-witz" id="witz">
-      Warum hat unser Boulderer ständig offene Tabs? Er hat im Büro drei Projekte, die er nicht loslassen kann.
-    </div>
-    <button type="button" class="boulder-knopf" id="neu">Nächster Griff 🧗</button>
-
-    <ol class="boulder-liste">
-      <li>Bouldern ist die einzige Sportart, bei der man sich freiwillig auf den Boden wirft und dafür Eintritt zahlt. Das nennt man Crashpad-Investition.</li>
-      <li>Im Bouldern gibt es keine Seilschaft, nur Crashpad-Freunde. Die stehen unten und rufen: „Du schaffst das!“ Und dann bist du wieder unten.</li>
-      <li>Sein Lieblingszug ist der Heel-Hook. Das Einzige, was er im Büro erfolgreich rückwärts macht.</li>
-      <li>Er hat im Meeting gefragt, ob jemand Kreide hat. Alle haben weggeschaut, weil sie Angst hatten, dass er gleich eine Route vorschlägt.</li>
-      <li>Der Chef fragte, warum er immer so weiße Hände hat. Antwort: Die Motivation rutscht ihm sonst ab.</li>
-      <li>Boulderer sagen nie „Ich bin gefallen“, sondern „Das war nur der Probegang“.</li>
-    </ol>
+    <article class="memo">
+      <div class="stempel">VERTRAULICH</div>
+      <div class="kopf">
+        <b>Von:</b><span>Abteilung Bouldern, Raum 410</span>
+        <b>An:</b><span>Alle Mitarbeitenden, die bereits gestürzt sind</span>
+        <b>Datum:</b><span>12.11.2026</span>
+        <b>Ref.-Nr.:</b><span>410/2026-11/BOULDER-001</span>
+        <b>Betreff:</b><span>Betriebsanweisung zur Nutzung der Kletterwand</span>
+      </div>
+      <h1>Sehr geehrte Damen und Herren,</h1>
+      <p>zur Sicherstellung eines geordneten Betriebs gelten ab sofort folgende Regelungen, bis auf Widerruf:</p>
+      <ol>
+        <li>Griffe sind Gemeinschaftseigentum. Sie werden nicht geteilt, sondern lediglich geduldet.</li>
+        <li>Die Crashpad-Fläche gilt als Arbeitsplatz im Sinne des Arbeitsschutzes. Eine Nutzung als Schlafplatz ist nicht vorgesehen.</li>
+        <li>Projekte, die länger als drei Wochen ohne Top bleiben, werden intern in „Herausforderungen“ umbenannt.</li>
+        <li>Kreide ist ausschließlich an den Händen anzubringen. Tastaturen sind hiervon ausgenommen.</li>
+      </ol>
+      <p>Wir bitten um Kenntnisnahme und verbleiben mit freundlichen Grüßen,</p>
+      <p>die Geschäftsleitung<br><em>i.&nbsp;A. Platzhalter &amp; Platzhalter</em></p>
+    </article>
   </main>
 
-  <footer class="fuss">Kein Witz war beim Bouldern verletzt. Die Matten übernehmen jede Haftung.</footer>
-
-  <script>
-    (function () {
-      var witze = Array.prototype.slice.call(document.querySelectorAll('.boulder-liste li')).map(function (li) { return li.textContent; });
-      var ziel = document.getElementById('witz');
-      document.getElementById('neu').addEventListener('click', function () {
-        ziel.textContent = witze[Math.floor(Math.random() * witze.length)];
-      });
-    })();
-  </script>
+  <footer class="fuss">Alle Regelungen ohne Gewähr. Änderungen vorbehalten. Die Matten übernehmen keine Haftung für Ambitionen.</footer>
 </body>
 </html>
