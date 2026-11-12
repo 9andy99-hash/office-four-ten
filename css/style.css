@@ -212,6 +212,27 @@ body.games { background: #111 repeating-linear-gradient(90deg, #1a1a1a 0 2px, tr
 .rangliste td { padding: 6px 4px; border-bottom: 1px dashed #333; }
 .rangliste td:last-child { text-align: right; color: #ff0; }
 
+/* Games: Unterkategorien */
+.unterkat-titel { color: #0f0; font-size: 18px; margin: 24px 0 10px; }
+.unterkategorien { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.unterkat { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; background: #000; border: 3px solid #ff0; padding: 18px 12px; box-shadow: 6px 6px 0 #f0f; transition: transform .1s; }
+.unterkat:hover { transform: rotate(-2deg) scale(1.04); background: #1a1a00; }
+.unterkat-icon { font-size: 48px; line-height: 1; }
+.unterkat b { font: 32px "Bangers", Impact, sans-serif; letter-spacing: 2px; color: #ff0; }
+.unterkat small { color: #aaa; text-align: center; }
+
+/* Games: Pingpong */
+.brotkrumen { margin: 18px 0 0; font-size: 14px; color: #aaa; }
+.brotkrumen a { color: #0f0; }
+.pong-titel { font: clamp(40px, 9vw, 72px) "Bangers", Impact, sans-serif; color: #ff0; margin: 4px 0 12px; letter-spacing: 3px; text-align: center; }
+.pong-rahmen { max-width: min(100%, calc((100vh - 150px) * 1.6)); margin: 0 auto; border: 4px solid #fff; box-shadow: 0 0 0 4px #000, 8px 8px 0 4px #0f0; background: #000; }
+#pong { display: block; width: 100%; height: auto; }
+.pong-info { text-align: center; font: 22px "Bangers", Impact, sans-serif; letter-spacing: 1px; min-height: 1.5em; margin: 16px 0 4px; }
+.pong-status { text-align: center; font-size: 13px; color: #888; margin: 0; }
+.pong-regeln { background: #000; border: 3px solid #0f0; margin: 26px 0; padding: 16px; }
+.pong-regeln h2 { color: #0f0; margin: 0 0 10px; }
+.pong-regeln li { margin: 6px 0; }
+
 /* ============ Handy ============ */
 @media (max-width: 640px) {
   .memo { padding: 20px 16px; }

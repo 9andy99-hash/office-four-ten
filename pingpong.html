@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Office 410 – Pingpong</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏓</text></svg>">
+</head>
+<body class="games">
+  <header class="topbar">
+    <a class="logo" href="index.html">OFFICE 410 <small>| Corporate Communications</small></a>
+    <nav>
+      <a href="index.html">Start</a>
+      <a href="events.html">Events</a>
+      <a href="news.html">Office News</a>
+      <a href="games.html" class="aktiv">Office Games</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <p class="brotkrumen"><a href="games.html">Office Games</a> › Pingpong</p>
+    <h1 class="pong-titel">🏓 PINGPONG</h1>
+
+    <div class="pong-rahmen">
+      <canvas id="pong" width="800" height="500" aria-label="Pingpong Spielfeld"></canvas>
+    </div>
+    <p id="pong-info" class="pong-info"></p>
+    <p id="pong-status" class="pong-status">Verbinde …</p>
+
+    <section class="pong-regeln">
+      <h2>▶ So geht's</h2>
+      <ol>
+        <li>Klick auf einen freien (weißen) Schläger. Er wird rot oder blau und gehört dir.</li>
+        <li>Sobald jemand anderes an seinem Rechner den zweiten Schläger nimmt: BOTH PLAYERS READY, 3, 2, 1, los.</li>
+        <li>Lenken mit den Pfeiltasten ⬆️ ⬇️. Der Ball wird bei jedem Treffer schneller.</li>
+        <li>Wer zuerst 5 Punkte hat, gewinnt. Danach sind beide Schläger wieder frei.</li>
+        <li>Nochmal auf deinen Schläger klicken = abgeben (mitten im Spiel heißt das: aufgeben).</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="fuss">Tischtennisplatte wird nicht gestellt. Schläger bleiben Eigentum der Geschäftsleitung.</footer>
+
+  <script src="js/vendor/peerjs.min.js"></script>
+  <script src="js/pingpong.js"></script>
+</body>
+</html>

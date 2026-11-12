@@ -27,14 +27,16 @@ Büro Events an (Party am 20.11.2026, IKEA Ausflug, Office Games). Viele Texte s
 noch Platzhalter und werden nach und nach ersetzt.
 
 ## Aufbau
-Reines HTML/CSS/JS, kein Build, keine Abhängigkeiten. Sprache der Seite und des Codes: Deutsch.
+Reines HTML/CSS/JS, kein Build. Einzige Fremdbibliothek: PeerJS in `js/vendor/` (nur für Pingpong). Sprache der Seite und des Codes: Deutsch.
 
 | Datei | Inhalt |
 |---|---|
 | `index.html` | Startseite: formelles Rundschreiben der „Geschäftsleitung“, darunter formeller Party Hinweis mit Button, dann Laufband, bunte Kacheln und ein Sticker („420? NEIN 410“) |
 | `events.html` | Party Einladung (`body.party`): Flammen, Ballons, Countdown |
 | `news.html` | Office News im Nachrichtenstudio Look (`body.news`), Inhalte aus `data/news.js` |
-| `games.html` | Ranglisten (`body.games`), Inhalte aus `data/games.js` |
+| `games.html` | Ranglisten (`body.games`), Inhalte aus `data/games.js`, Kacheln zu den Disziplinen (z. B. Pingpong) |
+| `pingpong.html` + `js/pingpong.js` | Online Pingpong für 2 Spieler an 2 Rechnern. Kein eigener Server: der erste Browser auf der Seite wird per PeerJS (WebRTC, öffentlicher Broker 0.peerjs.com) automatisch Gastgeber und rechnet das Spiel, die anderen verbinden sich mit ihm. Spiellogik in `Spiel` (testbar mit Node über `require`). |
+| `js/vendor/peerjs.min.js` | PeerJS 1.5.4 (MIT), lokal abgelegt statt CDN |
 | `css/style.css` | Alle Styles, nach Seiten in Abschnitte gegliedert |
 | `js/main.js` | Countdown, Uhr, News und Ranglisten rendern, Ballons, Sticker der Startseite |
 | `data/news.js` | News Beiträge (`window.NEWS`), neuer Beitrag oben einfügen |

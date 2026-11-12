@@ -10,7 +10,8 @@ Reine HTML/CSS/JS Seite, kein Build nötig. `index.html` doppelklicken = Vorscha
 * `index.html`: Startseite (formelles Rundschreiben, Party Hinweis, danach wird es bunt)
 * `events.html`: Party Einladung (Flammen, Ballons, Countdown)
 * `news.html`: Office News im Nachrichtenstudio Look
-* `games.html`: Ranglisten
+* `games.html`: Ranglisten und Disziplinen
+* `pingpong.html`: Online Pingpong für zwei Spieler an zwei Rechnern (Pfeiltasten, bis 5 Punkte)
 
 ## Inhalte ändern
 * **Neuer News Beitrag:** in `data/news.js` einen Block oben einfügen, Bild nach `img/` legen.
