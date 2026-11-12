@@ -104,7 +104,7 @@
   // ---------- Zufällige Sticker (Startseite) ----------
   var stickerZone = document.getElementById("sticker-zone");
   if (stickerZone) {
-    var texte = ["PARTY!!!", "NICHT DEM BETRIEBSRAT ZEIGEN", "100% PRODUKTIV", "420? NEIN 410", "SYNERGIE", "WOW", "KPI: SPASS", "ISO 9001 ZERTIFIZIERT*"];
+    var texte = ["420? NEIN 410"];
     var bg = ["#ff0", "#0ff", "#f0f", "#0f0", "#f80"];
     texte.forEach(function (t, i) {
       var s = document.createElement("div");
