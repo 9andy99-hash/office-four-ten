@@ -249,5 +249,8 @@ body.games { background: #111 repeating-linear-gradient(90deg, #1a1a1a 0 2px, tr
   .schwein { animation: none; left: 50%; margin-left: -28px; }
 }
 
-/* ---------- Bouldern (boulder.html) ---------- */
-body.boulder { background: #1b1b2f radial-gradient(circle at 20% 20%, #2e2e4f 0 2px, transparent 3px) 0 0 / 28px 28px; color: #f5f5f5; font-family: "Comic Neue", Arial, sans-serif; }
+/* ---------- Oleg-Knopf (Startseite) ---------- */
+.oleg-zone { text-align: center; margin: 30px 0; }
+.oleg-knopf { display: inline-flex; align-items: center; gap: 12px; font-family: "Bangers", Impact, sans-serif; font-size: 1.4rem; background: #fff; color: #000; border: 3px solid #000; padding: 10px 20px; cursor: pointer; transform: rotate(-2deg); box-shadow: 5px 5px 0 #000; }
+.oleg-knopf:hover { background: #ffd23f; }
+.oleg-antwort { min-height: 1.6em; margin-top: 14px; font-family: "Comic Neue", cursive; font-weight: 700; font-size: 1.3rem; }

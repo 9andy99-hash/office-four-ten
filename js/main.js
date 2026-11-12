@@ -133,3 +133,13 @@
     timer = setTimeout(function () { overlay.classList.remove("an"); }, 1500);
   });
 })();
+
+// ---------- Oleg-Knopf (Startseite) ----------
+(function () {
+  var knopf = document.getElementById("oleg-knopf");
+  var antwort = document.getElementById("oleg-antwort");
+  if (!knopf || !antwort) return;
+  knopf.addEventListener("click", function () {
+    antwort.textContent = "Oh leck meine Eier";
+  });
+})();
