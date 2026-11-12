@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Office 410 – Bouldern</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧗</text></svg>">
+</head>
+<body class="boulder">
+  <header class="topbar">
+    <a class="logo" href="index.html">OFFICE 410 <small>| Corporate Communications</small></a>
+    <nav>
+      <a href="index.html">Start</a>
+      <a href="events.html">Events</a>
+      <a href="news.html">Office News</a>
+      <a href="games.html">Office Games</a>
+      <a href="boulder.html" class="aktiv">Bouldern</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <h1 class="boulder-titel">BOULDER-ABTEILUNG</h1>
+    <p>&gt; Offizielle Witzsammlung der Kletterfraktion (ohne Seil, ohne Gewähr):</p>
+
+    <div class="boulder-witz" id="witz">
+      Warum hat unser Boulderer ständig offene Tabs? Er hat im Büro drei Projekte, die er nicht loslassen kann.
+    </div>
+    <button type="button" class="boulder-knopf" id="neu">Nächster Griff 🧗</button>
+
+    <ol class="boulder-liste">
+      <li>Bouldern ist die einzige Sportart, bei der man sich freiwillig auf den Boden wirft und dafür Eintritt zahlt. Das nennt man Crashpad-Investition.</li>
+      <li>Im Bouldern gibt es keine Seilschaft, nur Crashpad-Freunde. Die stehen unten und rufen: „Du schaffst das!“ Und dann bist du wieder unten.</li>
+      <li>Sein Lieblingszug ist der Heel-Hook. Das Einzige, was er im Büro erfolgreich rückwärts macht.</li>
+      <li>Er hat im Meeting gefragt, ob jemand Kreide hat. Alle haben weggeschaut, weil sie Angst hatten, dass er gleich eine Route vorschlägt.</li>
+      <li>Der Chef fragte, warum er immer so weiße Hände hat. Antwort: Die Motivation rutscht ihm sonst ab.</li>
+      <li>Boulderer sagen nie „Ich bin gefallen“, sondern „Das war nur der Probegang“.</li>
+    </ol>
+  </main>
+
+  <footer class="fuss">Kein Witz war beim Bouldern verletzt. Die Matten übernehmen jede Haftung.</footer>
+
+  <script>
+    (function () {
+      var witze = Array.prototype.slice.call(document.querySelectorAll('.boulder-liste li')).map(function (li) { return li.textContent; });
+      var ziel = document.getElementById('witz');
+      document.getElementById('neu').addEventListener('click', function () {
+        ziel.textContent = witze[Math.floor(Math.random() * witze.length)];
+      });
+    })();
+  </script>
+</body>
+</html>
