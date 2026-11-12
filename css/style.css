@@ -225,3 +225,14 @@ body.games { background: #111 repeating-linear-gradient(90deg, #1a1a1a 0 2px, tr
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; }
 }
+
+/* Klick-mich-Knopf und PRAAANK-Animation */
+.klick-knopf { font-family: 'Bangers', cursive; font-size: 3rem; letter-spacing: 3px; padding: 14px 40px; border: 6px solid #fff; background: #ff0; color: #000; cursor: pointer; transform: rotate(-3deg); box-shadow: 10px 10px 0 #f0f; transition: transform .1s; }
+.klick-knopf:hover { transform: rotate(3deg) scale(1.05); }
+.klick-knopf:active { transform: scale(.92); }
+.praank-overlay { position: fixed; inset: 0; z-index: 9999; display: none; align-items: center; justify-content: center; overflow: hidden; background: #ff0; pointer-events: none; }
+.praank-overlay.an { display: flex; animation: praank-blitz .9s steps(4) forwards; }
+.praank-text { font-family: 'Bangers', cursive; font-size: 40vw; line-height: 1; color: #e00; text-shadow: 8px 8px 0 #000, -8px -8px 0 #fff; white-space: nowrap; animation: praank-zoom .9s cubic-bezier(.2,1.6,.4,1) forwards, praank-wackeln .12s linear 6; }
+@keyframes praank-zoom { 0% { transform: scale(0) rotate(-20deg); } 60% { transform: scale(1.3) rotate(4deg); } 100% { transform: scale(1) rotate(-3deg); } }
+@keyframes praank-wackeln { 0%,100% { translate: 0 0; } 25% { translate: -18px 10px; } 50% { translate: 16px -12px; } 75% { translate: -10px -16px; } }
+@keyframes praank-blitz { 0% { background: #fff; } 25% { background: #f0f; } 50% { background: #0ff; } 75% { background: #ff0; } 100% { opacity: 0; visibility: hidden; } }

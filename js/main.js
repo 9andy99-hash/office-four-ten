@@ -118,3 +118,18 @@
     });
   }
 })();
+
+// Klick-mich-Knopf: PRAAANK-Animation
+(function () {
+  var knopf = document.getElementById("klick-knopf");
+  var overlay = document.getElementById("praank-overlay");
+  if (!knopf || !overlay) return;
+  var timer = null;
+  knopf.addEventListener("click", function () {
+    overlay.classList.remove("an");
+    void overlay.offsetWidth; // Animation neu starten
+    overlay.classList.add("an");
+    clearTimeout(timer);
+    timer = setTimeout(function () { overlay.classList.remove("an"); }, 1500);
+  });
+})();
