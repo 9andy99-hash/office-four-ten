@@ -62,7 +62,20 @@ footer.fuss .klein { font-size: 9px; }
   background: #fff; border: 1px solid #ccc; border-top: 4px solid #0b2a4a;
   margin: 0 auto 32px; box-shadow: 0 2px 6px rgba(0,0,0,.08);
 }
-.chaos-inner { padding: 28px 24px; text-align: center; color: #1a1a1a; }
+.chaos-inner { display: flex; align-items: center; justify-content: center; gap: 28px; padding: 28px 16px; text-align: center; color: #1a1a1a; }
+/* Pfeile links und rechts, die auf die Einladung zeigen */
+.pfeil { flex: none; font-size: 52px; line-height: 1; color: #c8102e; font-family: Arial, Helvetica, sans-serif; }
+.pfeil-links { animation: pfeil-links 0.8s ease-in-out infinite; }
+.pfeil-rechts { transform: scaleX(-1); animation: pfeil-rechts 0.8s ease-in-out infinite; }
+@keyframes pfeil-links { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(10px); } }
+@keyframes pfeil-rechts { 0%, 100% { transform: translateX(0) scaleX(-1); } 50% { transform: translateX(-10px) scaleX(-1); } }
+@media (max-width: 600px) {
+  .chaos-inner { gap: 10px; padding: 24px 8px; }
+  .pfeil { font-size: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pfeil-links, .pfeil-rechts { animation: none; }
+}
 .chaos-inner h2 { font-size: clamp(24px, 5vw, 32px); margin: 0 0 8px; color: #0b2a4a; font-weight: normal; }
 .chaos-inner p { margin: 0 0 16px; font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #555; }
 .knopf {
