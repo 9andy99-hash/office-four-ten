@@ -163,7 +163,7 @@
   }
 })();
 
-// Klick-mich-Knopf: PRAAANK-Animation
+// Klick-mich-Knopf: JJ sagt Nein (wackelndes Bild)
 (function () {
   var knopf = document.getElementById("klick-knopf");
   var overlay = document.getElementById("praank-overlay");
@@ -174,16 +174,7 @@
     void overlay.offsetWidth; // Animation neu starten
     overlay.classList.add("an");
     clearTimeout(timer);
-    timer = setTimeout(function () { overlay.classList.remove("an"); }, 1500);
+    timer = setTimeout(function () { overlay.classList.remove("an"); }, 2200);
   });
 })();
 
-// ---------- Oleg-Knopf (Startseite) ----------
-(function () {
-  var knopf = document.getElementById("oleg-knopf");
-  var antwort = document.getElementById("oleg-antwort");
-  if (!knopf || !antwort) return;
-  knopf.addEventListener("click", function () {
-    antwort.textContent = "Oh leck meine Eier";
-  });
-})();
