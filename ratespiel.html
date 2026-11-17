@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Office 410 – Das große Ratespiel</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪴</text></svg>">
+</head>
+<body class="games">
+  <header class="topbar">
+    <a class="logo" href="index.html">OFFICE 410 <small>| Corporate Communications</small></a>
+    <nav>
+      <a href="index.html">Start</a>
+      <a href="events.html">Events</a>
+      <a href="news.html">Office News</a>
+      <a href="games.html" class="aktiv">Office Games</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <p class="brotkrumen"><a href="games.html">Office Games</a> › Ratespiel</p>
+    <h1 class="pong-titel">DAS GROSSE RATESPIEL</h1>
+
+    <section class="rate-intro">
+      <figure>
+        <img src="img/ratespiel-wagen.webp" alt="Andy und JJ hinter einem Einkaufswagen voller Pflanzen im Gartenfachmarkt" width="1200" height="1600">
+      </figure>
+      <div>
+        <p class="rate-frage">Was hat die Pflanzenexpedition gekostet?</p>
+        <p>Die Kosten waren bei solch prächtigen Pflanzen natürlich irrelevant. Oder so.</p>
+        <p>Trotzdem die Preisfrage: Wie viel Euro haben Andy und JJ am 16.11. für die komplette Begrünung von Raum 410 ausgegeben? Alle Details zur Expedition gibt es in den <a href="news.html">Office News</a>.</p>
+        <p>Die Auflösung gibt es live auf der <a href="events.html">Office Party</a> am <b>Freitag, 20.11. um 20:00 Uhr</b>. Dem besten Tipp winkt ein großer Preis. 🏆</p>
+      </div>
+    </section>
+
+    <div class="rate-countdown" id="rate-countdown" aria-live="off"></div>
+
+    <section class="rate-box" id="rate-formular-box">
+      <h2>▶ Tipp abgeben</h2>
+      <form id="rate-formular" autocomplete="off">
+        <label>Dein Name
+          <input type="text" name="name" maxlength="30" required placeholder="z. B. Kevin aus 412">
+        </label>
+        <label>Dein Tipp in €
+          <input type="text" name="tipp" inputmode="decimal" maxlength="10" required placeholder="z. B. 99,50">
+        </label>
+        <button type="submit" class="rate-knopf">Tipp versiegeln ✉️</button>
+      </form>
+      <p class="rate-meldung" id="rate-meldung" role="status"></p>
+      <p class="rate-hinweis">Dein Name ist sofort für alle sichtbar, dein Tipp bleibt bis zur Auflösung geheim. Pro Name ein Tipp.</p>
+    </section>
+
+    <section class="rate-box" id="rate-ergebnis" hidden></section>
+
+    <section class="rate-box">
+      <h2>▶ Teilnehmende <span id="rate-anzahl"></span></h2>
+      <ul class="rate-liste" id="rate-teilnehmer"><li class="leer">Wird geladen …</li></ul>
+    </section>
+
+    <section class="pong-regeln">
+      <h2>▶ Regeln</h2>
+      <ul>
+        <li>Getippt wird der Gesamtbetrag in Euro, Cent sind erlaubt.</li>
+        <li>Der Tipp, der am nächsten am echten Betrag liegt, gewinnt. Egal ob drüber oder drunter.</li>
+        <li>Bei Gleichstand gewinnt, wer zuerst getippt hat.</li>
+        <li>Tipps sind bis Fr, 20.11. um 20:00 Uhr möglich. Dann wird alles aufgedeckt.</li>
+        <li>Bestechungsversuche der Geschäftsleitung werden wohlwollend geprüft.</li>
+      </ul>
+    </section>
+  </main>
+
+  <canvas id="konfetti" class="konfetti" aria-hidden="true"></canvas>
+
+  <footer class="fuss">Alle Angaben ohne Gewähr. Der Rechtsweg ist ausgeschlossen, der Weg zur Party nicht.</footer>
+
+  <script src="js/ratespiel.js"></script>
+</body>
+</html>

@@ -12,6 +12,9 @@ Reine HTML/CSS/JS Seite, kein Build nötig. `index.html` doppelklicken = Vorscha
 * `news.html`: Office News im Nachrichtenstudio Look
 * `games.html`: Ranglisten und Disziplinen
 * `pingpong.html`: Online Pingpong für zwei Spieler an zwei Rechnern (Pfeiltasten, bis 5 Punkte)
+* `ratespiel.html`: Ratespiel zu den Kosten der Pflanzenexpedition. Die Tipps speichert eine Netlify Function
+  (`netlify/functions/ratespiel.mjs`) in Netlify Blobs. Die richtige Lösung muss in Netlify als
+  Umgebungsvariable `RATESPIEL_LOESUNG` hinterlegt sein, damit sie nicht im öffentlichen Repo steht.
 
 ## Inhalte ändern
 * **Neuer News Beitrag:** in `data/news.js` einen Block oben einfügen, Bild nach `img/` legen.

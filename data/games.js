@@ -6,8 +6,8 @@ window.GAMES = [
     disziplin: "Klimmzug-Duell",
     einheit: "Wdh.",
     ergebnisse: [
-      { name: "Platzhalter 1", wert: 0 },
-      { name: "Platzhalter 2", wert: 0 }
+      { name: "Andy", wert: 0 },
+      { name: "JJ", wert: 0 }
     ]
   },
   {
@@ -15,7 +15,8 @@ window.GAMES = [
     einheit: "Sek.",
     ergebnisse: [
       { name: "Strichmännchen", wert: 9999 },
-      { name: "Platzhalter", wert: 0 }
+      { name: "Andy", wert: 0 },
+      { name: "JJ", wert: 0 }
     ]
   }
 ];

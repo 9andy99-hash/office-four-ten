@@ -35,11 +35,14 @@
   // ---------- News rendern ----------
   var newsBox = document.getElementById("news-liste");
   if (newsBox && window.NEWS) {
+    var bildElement = function (src, alt) {
+      var i = document.createElement("img");
+      i.src = src; i.alt = alt || ""; i.loading = "lazy";
+      return i;
+    };
     window.NEWS.forEach(function (n) {
       var art = document.createElement("article");
-      art.className = "meldung";
-      var img = document.createElement("img");
-      img.src = n.bild; img.alt = n.titel;
+      art.className = "meldung" + (n.gross ? " gross" : "") + (n.bild ? "" : " ohne-bild");
       var inhalt = document.createElement("div");
       inhalt.className = "inhalt";
       var binde = document.createElement("div");
@@ -51,9 +54,32 @@
       var unter = document.createElement("p"); unter.className = "unter"; unter.textContent = n.untertitel;
       inhalt.append(binde, h2, unter);
       (n.text || []).forEach(function (absatz) {
-        var p = document.createElement("p"); p.textContent = absatz; inhalt.appendChild(p);
+        if (typeof absatz === "string") {
+          var p = document.createElement("p"); p.textContent = absatz; inhalt.appendChild(p);
+        } else if (absatz.bild || absatz.bilder) {
+          var fig = document.createElement("figure");
+          var quellen = absatz.bilder || [absatz.bild];
+          if (quellen.length > 1) fig.className = "paar";
+          var reihe = document.createElement("div"); reihe.className = "bilder";
+          quellen.forEach(function (q) { reihe.appendChild(bildElement(q, absatz.unterschrift)); });
+          fig.appendChild(reihe);
+          if (absatz.unterschrift) {
+            var cap = document.createElement("figcaption"); cap.textContent = absatz.unterschrift; fig.appendChild(cap);
+          }
+          inhalt.appendChild(fig);
+        } else {
+          var pl = document.createElement("p");
+          if (absatz.text) pl.appendChild(document.createTextNode(absatz.text + " "));
+          if (absatz.link) {
+            var a = document.createElement("a");
+            a.href = absatz.link; a.className = "news-link"; a.textContent = absatz.linktext || absatz.link;
+            pl.appendChild(a);
+          }
+          inhalt.appendChild(pl);
+        }
       });
-      art.append(img, inhalt);
+      if (n.bild) art.appendChild(bildElement(n.bild, n.bildAlt || n.titel));
+      art.appendChild(inhalt);
       newsBox.appendChild(art);
     });
   }

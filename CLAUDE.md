@@ -27,7 +27,7 @@ Büro Events an (Party am 20.11.2026, IKEA Ausflug, Office Games). Viele Texte s
 noch Platzhalter und werden nach und nach ersetzt.
 
 ## Aufbau
-Reines HTML/CSS/JS, kein Build. Einzige Fremdbibliothek: PeerJS in `js/vendor/` (nur für Pingpong). Sprache der Seite und des Codes: Deutsch.
+Reines HTML/CSS/JS, kein Build. Ausnahme: eine Netlify Function fürs Ratespiel. Einzige Fremdbibliothek: PeerJS in `js/vendor/` (nur für Pingpong). Sprache der Seite und des Codes: Deutsch.
 
 | Datei | Inhalt |
 |---|---|
@@ -41,6 +41,9 @@ Reines HTML/CSS/JS, kein Build. Einzige Fremdbibliothek: PeerJS in `js/vendor/` 
 | `js/main.js` | Countdown, Uhr, News und Ranglisten rendern, Ballons, Sticker der Startseite |
 | `data/news.js` | News Beiträge (`window.NEWS`), neuer Beitrag oben einfügen |
 | `data/games.js` | Ranglisten (`window.GAMES`), werden automatisch sortiert |
+| `ratespiel.html` + `js/ratespiel.js` | Ratespiel (Kosten der Pflanzenexpedition). Namen sofort sichtbar, Tipps erst ab Fr 20.11.2026 20:00 Uhr, dann Gewinner mit Konfetti |
+| `netlify/functions/ratespiel.mjs` | Netlify Function `/api/ratespiel`, speichert Tipps in Netlify Blobs. Logik in `netlify/ratespiel-logik.mjs` (mit Node testbar). Die Lösung steht absichtlich nicht im öffentlichen Repo, sondern in der Netlify Umgebungsvariable `RATESPIEL_LOESUNG` |
+| `package.json` | Nur für `@netlify/blobs` (Function). Kein Build für die Seite selbst |
 | `img/` | Bilder |
 
 Party Datum steht an zwei Stellen: Text in `events.html` und `PARTY` in `js/main.js`.

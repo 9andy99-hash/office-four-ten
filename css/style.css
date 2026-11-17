@@ -138,6 +138,16 @@ body.news {
 .meldung h2 { margin: 14px 18px 2px; font-size: 26px; }
 .meldung .unter { margin: 0 18px 10px; color: #9cf; font-style: italic; }
 .meldung p { margin: 0 18px 8px; }
+.meldung.gross, .meldung.ohne-bild { grid-template-columns: 1fr; }
+.meldung.gross > img { max-height: 520px; object-position: 50% 30%; }
+.meldung.gross .inhalt { max-width: 720px; }
+.meldung.gross p { line-height: 1.55; margin-bottom: 12px; }
+.meldung figure { margin: 18px; }
+.meldung figure img { display: block; max-width: 100%; max-height: 620px; width: auto; height: auto; margin: 0 auto; border: 3px solid #fff; }
+.meldung figure.paar img { width: 100%; max-height: none; }
+.meldung figure.paar .bilder { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.meldung figcaption { font-size: 14px; color: #9cf; font-style: italic; margin-top: 6px; }
+.news-link { color: #ff0; font-weight: bold; }
 
 .ticker {
   position: sticky; bottom: 0; display: flex; background: #fff; color: #021a3d; font-weight: bold; z-index: 20;
@@ -236,6 +246,50 @@ body.games { background: #111 repeating-linear-gradient(90deg, #1a1a1a 0 2px, tr
 .pong-regeln h2 { color: #0f0; margin: 0 0 10px; }
 .pong-regeln li { margin: 6px 0; }
 
+/* Games: Ratespiel */
+.rate-intro { display: grid; grid-template-columns: 280px 1fr; gap: 24px; align-items: start; background: #000; border: 3px solid #ff0; box-shadow: 6px 6px 0 #f0f; padding: 16px; }
+.rate-intro figure { margin: 0; }
+.rate-intro img { display: block; width: 100%; height: auto; border: 3px solid #fff; transform: rotate(-2deg); }
+.rate-intro p { margin: 0 0 12px; font-size: 17px; line-height: 1.5; }
+.rate-intro a, .rate-box a { color: #0f0; }
+.rate-frage { font: 34px/1.1 "Bangers", Impact, sans-serif !important; letter-spacing: 1px; color: #ff0; }
+.rate-countdown { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; margin: 26px 0; }
+.rate-countdown p { width: 100%; text-align: center; margin: 0; color: #0f0; font-size: 18px; }
+.rate-countdown div { background: #000; border: 3px solid #0f0; padding: 8px 14px; min-width: 76px; text-align: center; }
+.rate-countdown b { display: block; font: 40px "Bangers", Impact, sans-serif; color: #ff0; letter-spacing: 1px; }
+.rate-box { background: #000; border: 3px solid #0f0; margin: 26px 0; padding: 16px; }
+.rate-box[hidden] { display: none; }
+.rate-box h2 { color: #0f0; margin: 0 0 12px; }
+#rate-formular { display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; align-items: end; }
+#rate-formular label { display: flex; flex-direction: column; gap: 4px; color: #aaa; font-size: 14px; }
+#rate-formular input { font: 20px "Courier New", monospace; padding: 10px; background: #111; color: #fff; border: 2px solid #ff0; }
+#rate-formular input:focus { outline: 3px solid #f0f; }
+.rate-knopf { font: 24px "Bangers", Impact, sans-serif; letter-spacing: 2px; background: #ff0; color: #000; border: 3px solid #fff; padding: 10px 18px; cursor: pointer; box-shadow: 4px 4px 0 #f0f; }
+.rate-knopf:hover { background: #0f0; }
+.rate-knopf:disabled { opacity: .5; cursor: wait; }
+.rate-meldung { min-height: 1.4em; margin: 12px 0 0; font-weight: bold; }
+.rate-meldung.ok { color: #0f0; }
+.rate-meldung.fehler { color: #ff2d55; }
+.rate-hinweis { color: #888; font-size: 13px; margin: 6px 0 0; }
+.rate-liste { list-style: none; margin: 0; padding: 0; font-size: 18px; }
+.rate-liste li { display: flex; justify-content: space-between; gap: 12px; padding: 7px 4px; border-bottom: 1px dashed #333; }
+.rate-liste li span:last-child { color: #ff0; text-align: right; white-space: nowrap; }
+.rate-liste .versiegelt { color: #888 !important; }
+.rate-liste .leer { color: #888; display: block; }
+.rate-liste .sieger { background: #1a1a00; font-weight: bold; }
+.rate-loesung { font-size: 20px; }
+.rate-loesung b { color: #ff0; font: 40px "Bangers", Impact, sans-serif; letter-spacing: 1px; }
+.rate-gewinner { text-align: center; margin: 18px 0; padding: 18px; border: 4px dashed #ff0; }
+.rate-gewinner small { display: block; font-size: 18px; color: #0f0; }
+.rate-gewinner b { display: block; font: clamp(44px, 12vw, 90px)/1.1 "Bangers", Impact, sans-serif; color: #ff0; letter-spacing: 2px; text-shadow: 4px 4px 0 #f0f; animation: wackel .9s infinite; }
+.konfetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
+
+/* Party: Hinweis aufs Ratespiel */
+.party-ratespiel { display: block; max-width: 560px; margin: 20px auto; padding: 14px 16px; background: #0f0; color: #000; border: 4px solid #000; box-shadow: 6px 6px 0 #f0f; transform: rotate(1.5deg); text-decoration: none; font-size: 18px; }
+.party-ratespiel b { display: block; font: 30px "Bangers", Impact, sans-serif; letter-spacing: 1px; }
+.party-ratespiel:hover { transform: rotate(-1deg) scale(1.03); }
+.party-foto { display: block; width: min(100%, 420px); height: auto; margin: 16px auto; border: 4px solid #ff0; transform: rotate(-3deg); }
+
 /* ============ Handy ============ */
 @media (max-width: 640px) {
   .memo { padding: 20px 16px; }
@@ -245,6 +299,10 @@ body.games { background: #111 repeating-linear-gradient(90deg, #1a1a1a 0 2px, tr
   .flamme { width: 44px; }
   .seiten-feuer { display: none; }
   .uhr { font-size: 22px; }
+  .rate-intro { grid-template-columns: 1fr; }
+  .rate-intro img { max-width: 260px; margin: 0 auto; }
+  #rate-formular { grid-template-columns: 1fr; }
+  .meldung figure { margin: 14px 10px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; }

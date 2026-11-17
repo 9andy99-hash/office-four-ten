@@ -1,0 +1,8 @@
+{
+  "name": "office-four-ten",
+  "private": true,
+  "description": "Intranet Seite von Raum 410. Nur für die Netlify Function des Ratespiels nötig.",
+  "dependencies": {
+    "@netlify/blobs": "^11.1.9"
+  }
+}
