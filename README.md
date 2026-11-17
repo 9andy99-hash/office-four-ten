@@ -11,7 +11,7 @@ Reine HTML/CSS/JS Seite, kein Build nötig. `index.html` doppelklicken = Vorscha
 * `events.html`: Party Einladung (Flammen, Ballons, Countdown)
 * `news.html`: Office News im Nachrichtenstudio Look
 * `games.html`: Ranglisten und Disziplinen
-* `pingpong.html`: Online Pingpong für zwei Spieler an zwei Rechnern (Pfeiltasten, bis 5 Punkte)
+* `pingpong.html`: Online Pingpong für zwei Spieler an zwei Rechnern (Pfeiltasten, bis 5 Punkte), mit Namen und dauerhafter Rangliste (Netlify Function `/api/pingpong`)
 * `ratespiel.html`: Ratespiel zu den Kosten der Pflanzenexpedition. Die Tipps speichert eine Netlify Function
   (`netlify/functions/ratespiel.mjs`) in Netlify Blobs. Die richtige Lösung muss in Netlify als
   Umgebungsvariable `RATESPIEL_LOESUNG` hinterlegt sein, damit sie nicht im öffentlichen Repo steht.

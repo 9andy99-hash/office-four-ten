@@ -10,18 +10,24 @@
   "use strict";
 
   // ---------- Einstellungen ----------
-  var RAUM_ID = "office-four-ten-pingpong-v1"; // feste Adresse des Gastgebers
+  var RAUM_ID = "office-four-ten-pingpong-v2"; // feste Adresse des Gastgebers (v2: mit Namen)
   var W = 800, H = 500;
   var SCHLAEGER_B = 12, SCHLAEGER_H = 84, RAND = 26;
   var BALL_R = 7;
-  var SCHLAEGER_TEMPO = 460;    // Pixel pro Sekunde
-  var BALL_START = 320;         // Pixel pro Sekunde
-  var BALL_FAKTOR = 1.07;       // pro Treffer schneller
-  var BALL_MAX = 1300;
+  var SCHLAEGER_TEMPO = 520;    // Pixel pro Sekunde
+  var BALL_START = 400;         // Pixel pro Sekunde
+  var BALL_FAKTOR = 1.12;       // pro Treffer schneller
+  var BALL_MAX = 1800;
+  var API = "/api/pingpong";    // Rangliste (netlify/functions/pingpong.mjs)
   var SIEG_PUNKTE = 5;
   var COUNTDOWN = 3, SIEG_ANZEIGE = 5, AUFSCHLAG_PAUSE = 0.8;
   var FARBE = { links: "#ff2d55", rechts: "#0a84ff" };
   var NAME = { links: "PLAYER RED", rechts: "PLAYER BLUE" };
+
+  function normSpielerName(roh) {
+    if (typeof roh !== "string") return "";
+    return roh.replace(/[\u0000-\u001f\u007f<>]/g, "").replace(/\s+/g, " ").trim().slice(0, 16);
+  }
 
   // ============================================================
   //  SPIEL-LOGIK (läuft nur beim Gastgeber)
@@ -31,6 +37,7 @@
   Spiel.prototype.zuruecksetzen = function () {
     this.phase = "warten";        // warten | countdown | spiel | sieg
     this.besitzer = { links: null, rechts: null };
+    this.namen = { links: null, rechts: null };
     this.y = { links: H / 2, rechts: H / 2 };
     this.punkte = { links: 0, rechts: 0 };
     this.ball = { x: W / 2, y: H / 2, vx: 0, vy: 0 };
@@ -48,6 +55,8 @@
     return null;
   };
 
+  Spiel.prototype.nameVon = function (seite) { return this.namen[seite] || NAME[seite]; };
+
   Spiel.prototype.abbrechen = function (text) {
     this.zuruecksetzen();
     this.melde(text);
@@ -62,16 +71,27 @@
       var meine = this.seiteVon(id);
       if (this.besitzer[m.seite] === id) {
         // zweiter Klick: Schläger wieder abgeben
-        if (laeuft) { this.abbrechen(NAME[m.seite] + " hat aufgegeben. Spiel abgebrochen."); return; }
+        if (laeuft) { this.abbrechen(this.nameVon(m.seite) + " hat aufgegeben. Spiel abgebrochen."); return; }
         this.besitzer[m.seite] = null;
+        this.namen[m.seite] = null;
         return;
       }
       if (this.besitzer[m.seite] !== null) return; // schon vergeben, Pech gehabt
+      var name = normSpielerName(m.name);
+      if (!name) return;
+      var andere = m.seite === "links" ? "rechts" : "links";
+      if (this.besitzer[andere] !== id && this.namen[andere] &&
+          this.namen[andere].toLowerCase() === name.toLowerCase()) {
+        this.melde(name + " spielt schon. Bitte anderen Namen nehmen.");
+        return;
+      }
       if (meine) {
         if (laeuft) return;                         // mitten im Spiel nicht wechseln
         this.besitzer[meine] = null;                // Seite wechseln
+        this.namen[meine] = null;
       }
       this.besitzer[m.seite] = id;
+      this.namen[m.seite] = name;
       this.eingabe[id] = { hoch: false, runter: false };
       if (this.besitzer.links && this.besitzer.rechts && this.phase === "warten") {
         this.phase = "countdown";
@@ -92,9 +112,10 @@
     delete this.eingabe[id];
     if (!seite) return;
     if (this.phase === "countdown" || this.phase === "spiel") {
-      this.abbrechen(NAME[seite] + " ist weg. Spiel abgebrochen.");
+      this.abbrechen(this.nameVon(seite) + " ist weg. Spiel abgebrochen.");
     } else if (this.phase === "warten") {
       this.besitzer[seite] = null;
+      this.namen[seite] = null;
     }
   };
 
@@ -122,14 +143,14 @@
       }
     } else if (this.phase === "spiel") {
       // kleine Teilschritte, damit der schnelle Ball nicht durch den Schläger rutscht
-      var schritte = Math.ceil(dt / (1 / 240));
+      var schritte = Math.ceil(dt / (1 / 480));
       for (var i = 0; i < schritte && this.phase === "spiel"; i++) this.schritt(dt / schritte);
     } else if (this.phase === "sieg") {
       this.timer -= dt;
       if (this.timer <= 0) {
-        var s = this.sieger;
+        var s = this.nameVon(this.sieger);
         this.zuruecksetzen();
-        this.melde(NAME[s] + " hat gewonnen. Schläger sind wieder frei!");
+        this.melde(s + " hat gewonnen. Schläger sind wieder frei!");
       }
     }
   };
@@ -192,6 +213,12 @@
       this.phase = "sieg";
       this.sieger = seite;
       this.timer = SIEG_ANZEIGE;
+      var verlierer = seite === "links" ? "rechts" : "links";
+      // wird vom Netzwerkteil abgeholt und an die Rangliste gemeldet
+      this.ergebnis = {
+        sieger: this.nameVon(seite), verlierer: this.nameVon(verlierer),
+        stand: [this.punkte[seite], this.punkte[verlierer]]
+      };
       this.ball = { x: W / 2, y: H / 2, vx: 0, vy: 0 };
       this.eingabe = {};
     } else {
@@ -204,6 +231,7 @@
     return {
       p: this.phase,
       b: this.besitzer,
+      n: [this.namen.links, this.namen.rechts],
       y: [Math.round(this.y.links), Math.round(this.y.rechts)],
       ball: [Math.round(this.ball.x), Math.round(this.ball.y)],
       pause: this.pause > 0,
@@ -308,6 +336,11 @@
       var dt = Math.min(0.05, (jetzt - zuletzt) / 1000);
       zuletzt = jetzt;
       g.spiel.tick(dt);
+      if (g.spiel.ergebnis) {
+        var erg = g.spiel.ergebnis;
+        g.spiel.ergebnis = null;
+        ergebnisMelden(erg);
+      }
       var ids = Object.keys(g.verbindungen);
       var z = g.spiel.zustand(ids.length + 1);
       ids.forEach(function (id) {
@@ -353,6 +386,98 @@
   window.addEventListener("pagehide", aufraeumen);
 
   // ============================================================
+  //  RANGLISTE (gewonnene Spiele, dauerhaft auf dem Server)
+  // ============================================================
+  var bekannteNamen = [];
+  var ranglisteEl = document.getElementById("pong-rangliste");
+
+  function ranglisteZeigen(d) {
+    if (!d || !d.rangliste) return;
+    bekannteNamen = d.rangliste.map(function (r) { return r.name; });
+    if (!ranglisteEl) return;
+    ranglisteEl.innerHTML = "";
+    if (!d.rangliste.length) {
+      ranglisteEl.innerHTML = '<tr><td colspan="4">Noch keine Spiele. Ruhm wartet!</td></tr>';
+      return;
+    }
+    d.rangliste.forEach(function (r, i) {
+      var tr = ranglisteEl.insertRow();
+      tr.insertCell().textContent = ["🥇", "🥈", "🥉"][i] || (i + 1) + ".";
+      tr.insertCell().textContent = r.name;
+      tr.insertCell().textContent = r.siege + (r.siege === 1 ? " Sieg" : " Siege");
+      tr.insertCell().textContent = r.niederlagen + " verloren";
+    });
+  }
+
+  function ranglisteLaden() {
+    return fetch(API, { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(ranglisteZeigen)
+      .catch(function () {
+        if (ranglisteEl && !bekannteNamen.length) {
+          ranglisteEl.innerHTML = '<tr><td colspan="4">Rangliste gerade nicht erreichbar.</td></tr>';
+        }
+      });
+  }
+
+  function ergebnisMelden(e) {
+    fetch(API, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(e) })
+      .then(function (r) { return r.json(); })
+      .then(ranglisteZeigen)
+      .catch(function () {});
+  }
+
+  // ============================================================
+  //  NAMEN EINGEBEN (nach Klick auf einen freien Schläger)
+  // ============================================================
+  var namenBox = document.getElementById("pong-namen");
+  var namenForm = document.getElementById("pong-namen-form");
+  var namenFeld = document.getElementById("pong-namen-feld");
+  var namenChips = document.getElementById("pong-namen-chips");
+  var namenTitel = document.getElementById("pong-namen-titel");
+  var gewaehlteSeite = null;
+
+  function gespeicherterName() { try { return localStorage.getItem("pong-name") || ""; } catch (e) { return ""; } }
+
+  function namenFragen(seite) {
+    gewaehlteSeite = seite;
+    namenTitel.textContent = "Wer spielt " + (seite === "links" ? "ROT" : "BLAU") + "?";
+    namenTitel.style.color = FARBE[seite];
+    namenFeld.value = gespeicherterName();
+    namenChips.innerHTML = "";
+    bekannteNamen.slice(0, 12).forEach(function (n) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "pong-chip"; b.textContent = n;
+      b.addEventListener("click", function () { namenFeld.value = n; namenAbschicken(); });
+      namenChips.appendChild(b);
+    });
+    namenBox.hidden = false;
+    namenFeld.focus();
+    namenFeld.select();
+  }
+
+  function namenSchliessen() { namenBox.hidden = true; gewaehlteSeite = null; canvas.focus && canvas.focus(); }
+
+  function namenAbschicken() {
+    var name = normSpielerName(namenFeld.value);
+    if (!name) { namenFeld.focus(); return; }
+    try { localStorage.setItem("pong-name", name); } catch (e) {}
+    if (gewaehlteSeite && online) senden({ typ: "waehle", seite: gewaehlteSeite, name: name });
+    namenSchliessen();
+  }
+
+  namenForm.addEventListener("submit", function (ev) { ev.preventDefault(); namenAbschicken(); });
+  document.getElementById("pong-namen-abbrechen").addEventListener("click", namenSchliessen);
+  namenBox.addEventListener("keydown", function (ev) { if (ev.key === "Escape") namenSchliessen(); });
+
+  // Zeichen in Canvas Texten und HTML sicher machen
+  function esc(t) { return String(t).replace(/[&<>"']/g, function (c) { return "&#" + c.charCodeAt(0) + ";"; }); }
+  function spielerName(z, seite) {
+    var n = z && z.n ? z.n[seite === "links" ? 0 : 1] : null;
+    return (n || NAME[seite]).toUpperCase();
+  }
+
+  // ============================================================
   //  EINGABE
   // ============================================================
   function meineSeite() {
@@ -384,7 +509,12 @@
   canvas.addEventListener("mouseleave", function () { hover = null; });
   canvas.addEventListener("click", function (ev) {
     var seite = seiteUnter(punktImCanvas(ev));
-    if (seite && online) senden({ typ: "waehle", seite: seite });
+    if (!seite || !online || !zustand || zustand.p === "sieg") return;
+    if (zustand.b[seite] === ich) senden({ typ: "waehle", seite: seite }); // abgeben
+    else if (zustand.b[seite] === null) {
+      var laeuft = zustand.p === "countdown" || zustand.p === "spiel";
+      if (!(laeuft && meineSeite())) namenFragen(seite);
+    }
   });
 
   var tasten = { hoch: false, runter: false };
@@ -412,6 +542,7 @@
   var statusEl = document.getElementById("pong-status");
   var infoEl = document.getElementById("pong-info");
   var letzterStatus = "";
+  var letztePhase = null;
 
   function statusText(t) {
     if (t !== letzterStatus) { letzterStatus = t; if (statusEl) statusEl.textContent = t; }
@@ -468,9 +599,16 @@
 
     // Punkte
     if (z.p !== "warten") {
-      text(String(z.pk[0]), W / 2 - 70, 50, 64, FARBE.links);
-      text(String(z.pk[1]), W / 2 + 70, 50, 64, FARBE.rechts);
+      text(String(z.pk[0]), W / 2 - 70, 58, 64, FARBE.links);
+      text(String(z.pk[1]), W / 2 + 70, 58, 64, FARBE.rechts);
     }
+    // Namen über den Hälften, sobald jemand einen Schläger hat
+    if (z.b.links) text(spielerName(z, "links"), W / 4, 22, 24, FARBE.links);
+    if (z.b.rechts) text(spielerName(z, "rechts"), W * 3 / 4, 22, 24, FARBE.rechts);
+
+    // Nach einem Sieg die Rangliste neu laden
+    if (z.p === "sieg" && letztePhase !== "sieg") setTimeout(ranglisteLaden, 1500);
+    letztePhase = z.p;
 
     // Ball
     if (z.p === "spiel" && !(z.pause && Math.floor(performance.now() / 120) % 2)) {
@@ -483,19 +621,19 @@
     // Statuszeilen
     var mein = meineSeite();
     var bereit = [];
-    if (z.b.links) bereit.push('<span style="color:' + FARBE.links + '">PLAYER RED READY</span>');
-    if (z.b.rechts) bereit.push('<span style="color:' + FARBE.rechts + '">PLAYER BLUE READY</span>');
+    if (z.b.links) bereit.push('<span style="color:' + FARBE.links + '">' + esc(spielerName(z, "links")) + ' READY</span>');
+    if (z.b.rechts) bereit.push('<span style="color:' + FARBE.rechts + '">' + esc(spielerName(z, "rechts")) + ' READY</span>');
 
     if (z.p === "warten") {
-      if (z.b.links && !z.b.rechts) text("PLAYER RED READY", W / 2, H / 2 - 20, 46, FARBE.links);
-      else if (z.b.rechts && !z.b.links) text("PLAYER BLUE READY", W / 2, H / 2 - 20, 46, FARBE.rechts);
+      if (z.b.links && !z.b.rechts) text(spielerName(z, "links") + " READY", W / 2, H / 2 - 20, 46, FARBE.links);
+      else if (z.b.rechts && !z.b.links) text(spielerName(z, "rechts") + " READY", W / 2, H / 2 - 20, 46, FARBE.rechts);
       else text("KLICK AUF EINEN SCHLÄGER", W / 2, H / 2 - 20, 40, "#fff");
       text(mein ? "Warte auf Gegner …" : "Freien Schläger anklicken zum Mitspielen", W / 2, H / 2 + 30, 22, "#aaa");
     } else if (z.p === "countdown") {
       text("BOTH PLAYERS READY", W / 2, H / 2 - 50, 46, "#ff0");
       text(String(Math.max(1, z.t)), W / 2, H / 2 + 30, 110, "#fff");
     } else if (z.p === "sieg") {
-      text(NAME[z.w] + " WINS!", W / 2, H / 2 - 20, 70, FARBE[z.w]);
+      text(spielerName(z, z.w) + " WINS!", W / 2, H / 2 - 20, 70, FARBE[z.w]);
       text(z.pk[0] + " : " + z.pk[1], W / 2, H / 2 + 45, 40, "#fff");
     }
     if (z.m) text(z.m, W / 2, H - 30, 22, "#ff0");
@@ -503,9 +641,9 @@
     // HTML Info unter dem Spielfeld
     var info;
     if (z.p === "countdown" || z.p === "spiel") info = '<span style="color:#ff0">BOTH PLAYERS READY</span>';
-    else if (z.p === "sieg") info = '<span style="color:' + FARBE[z.w] + '">' + NAME[z.w] + " WINS! Gleich sind die Schläger wieder frei …</span>";
+    else if (z.p === "sieg") info = '<span style="color:' + FARBE[z.w] + '">' + esc(spielerName(z, z.w)) + " WINS! Gleich sind die Schläger wieder frei …</span>";
     else info = bereit.join(" · ") || "Niemand bereit";
-    if (mein) info += ' · Du bist <b style="color:' + FARBE[mein] + '">' + NAME[mein] + "</b>, lenken mit ⬆️ ⬇️";
+    if (mein) info += ' · Du bist <b style="color:' + FARBE[mein] + '">' + esc(spielerName(z, mein)) + "</b>, lenken mit ⬆️ ⬇️";
     setzeInfo(info);
     statusText("🟢 online · " + z.z + (z.z === 1 ? " Person" : " Personen") + " auf der Seite");
 
@@ -514,4 +652,5 @@
 
   requestAnimationFrame(zeichnen);
   verbinden();
+  ranglisteLaden();
 })();

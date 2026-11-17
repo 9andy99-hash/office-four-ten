@@ -35,7 +35,7 @@ Reines HTML/CSS/JS, kein Build. Ausnahme: eine Netlify Function fürs Ratespiel.
 | `events.html` | Party Einladung (`body.party`): Flammen, Ballons, Countdown |
 | `news.html` | Office News im Nachrichtenstudio Look (`body.news`), Inhalte aus `data/news.js` |
 | `games.html` | Ranglisten (`body.games`), Inhalte aus `data/games.js`, Kacheln zu den Disziplinen (z. B. Pingpong) |
-| `pingpong.html` + `js/pingpong.js` | Online Pingpong für 2 Spieler an 2 Rechnern. Kein eigener Server: der erste Browser auf der Seite wird per PeerJS (WebRTC, öffentlicher Broker 0.peerjs.com) automatisch Gastgeber und rechnet das Spiel, die anderen verbinden sich mit ihm. Spiellogik in `Spiel` (testbar mit Node über `require`). |
+| `pingpong.html` + `js/pingpong.js` | Online Pingpong für 2 Spieler an 2 Rechnern. Kein eigener Server: der erste Browser auf der Seite wird per PeerJS (WebRTC, öffentlicher Broker 0.peerjs.com) automatisch Gastgeber und rechnet das Spiel, die anderen verbinden sich mit ihm. Spiellogik in `Spiel` (testbar mit Node über `require`). Spieler geben nach Klick auf den Schläger einen Namen ein. Nach jedem Sieg meldet der Gastgeber Browser das Ergebnis an `/api/pingpong` (`netlify/functions/pingpong.mjs`, Logik in `netlify/pingpong-logik.mjs`), die Rangliste (gewonnene Spiele) liegt in Netlify Blobs. |
 | `js/vendor/peerjs.min.js` | PeerJS 1.5.4 (MIT), lokal abgelegt statt CDN |
 | `css/style.css` | Alle Styles, nach Seiten in Abschnitte gegliedert |
 | `js/main.js` | Countdown, Uhr, News und Ranglisten rendern, Ballons, Sticker der Startseite |

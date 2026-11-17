@@ -27,17 +27,33 @@
 
     <div class="pong-rahmen">
       <canvas id="pong" width="800" height="500" aria-label="Pingpong Spielfeld"></canvas>
+      <div class="pong-namen" id="pong-namen" hidden>
+        <form id="pong-namen-form" autocomplete="off">
+          <h2 id="pong-namen-titel">Wer spielt?</h2>
+          <div class="pong-chips" id="pong-namen-chips"></div>
+          <input id="pong-namen-feld" type="text" maxlength="16" placeholder="Dein Name" aria-label="Dein Name">
+          <div class="pong-namen-knoepfe">
+            <button type="submit" class="rate-knopf">Los geht's</button>
+            <button type="button" class="pong-abbrechen" id="pong-namen-abbrechen">Abbrechen</button>
+          </div>
+        </form>
+      </div>
     </div>
     <p id="pong-info" class="pong-info"></p>
     <p id="pong-status" class="pong-status">Verbinde …</p>
 
+    <section class="rangliste">
+      <h2>▶ Rangliste: gewonnene Spiele</h2>
+      <table id="pong-rangliste"><tr><td>Wird geladen …</td></tr></table>
+    </section>
+
     <section class="pong-regeln">
       <h2>▶ So geht's</h2>
       <ol>
-        <li>Klick auf einen freien (weißen) Schläger. Er wird rot oder blau und gehört dir.</li>
+        <li>Klick auf einen freien (weißen) Schläger und gib deinen Namen ein (oder tipp auf einen schon bekannten). Der Schläger wird rot oder blau und gehört dir.</li>
         <li>Sobald jemand anderes an seinem Rechner den zweiten Schläger nimmt: BOTH PLAYERS READY, 3, 2, 1, los.</li>
         <li>Lenken mit den Pfeiltasten ⬆️ ⬇️. Der Ball wird bei jedem Treffer schneller.</li>
-        <li>Wer zuerst 5 Punkte hat, gewinnt. Danach sind beide Schläger wieder frei.</li>
+        <li>Wer zuerst 5 Punkte hat, gewinnt und bekommt einen Sieg in der Rangliste. Danach sind beide Schläger wieder frei.</li>
         <li>Nochmal auf deinen Schläger klicken = abgeben (mitten im Spiel heißt das: aufgeben).</li>
       </ol>
     </section>

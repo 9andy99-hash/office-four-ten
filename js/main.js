@@ -103,6 +103,24 @@
     });
   }
 
+  // ---------- Pingpong Rangliste (Office Games Übersicht) ----------
+  var pongTabelle = document.getElementById("pingpong-uebersicht");
+  if (pongTabelle) {
+    fetch("/api/pingpong", { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        pongTabelle.innerHTML = "";
+        if (!d.rangliste.length) { pongTabelle.innerHTML = "<tr><td>Noch keine Spiele.</td></tr>"; return; }
+        d.rangliste.forEach(function (e, i) {
+          var tr = pongTabelle.insertRow();
+          tr.insertCell().textContent = ["🥇", "🥈", "🥉"][i] || (i + 1) + ".";
+          tr.insertCell().textContent = e.name;
+          tr.insertCell().textContent = e.siege + (e.siege === 1 ? " Sieg" : " Siege");
+        });
+      })
+      .catch(function () { pongTabelle.innerHTML = "<tr><td>Rangliste gerade nicht erreichbar.</td></tr>"; });
+  }
+
   // ---------- Ballons (Party-Seite) ----------
   var party = document.body.classList.contains("party");
   if (party && !matchMedia("(prefers-reduced-motion: reduce)").matches) {

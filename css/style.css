@@ -242,6 +242,17 @@ body.games { background: #111 repeating-linear-gradient(90deg, #1a1a1a 0 2px, tr
 #pong { display: block; width: 100%; height: auto; }
 .pong-info { text-align: center; font: 22px "Bangers", Impact, sans-serif; letter-spacing: 1px; min-height: 1.5em; margin: 16px 0 4px; }
 .pong-status { text-align: center; font-size: 13px; color: #888; margin: 0; }
+.pong-rahmen { position: relative; }
+.pong-namen { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.82); z-index: 5; padding: 10px; }
+.pong-namen[hidden] { display: none; }
+.pong-namen form { background: #000; border: 3px solid #ff0; box-shadow: 6px 6px 0 #f0f; padding: 16px 18px; width: min(100%, 380px); text-align: center; }
+.pong-namen h2 { font: 34px "Bangers", Impact, sans-serif; letter-spacing: 2px; margin: 0 0 10px; }
+.pong-chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 10px; }
+.pong-chip { font: bold 15px "Courier New", monospace; background: #111; color: #0f0; border: 2px solid #0f0; padding: 4px 10px; cursor: pointer; }
+.pong-chip:hover { background: #0f0; color: #000; }
+#pong-namen-feld { width: 100%; box-sizing: border-box; font: 20px "Courier New", monospace; padding: 8px; background: #111; color: #fff; border: 2px solid #ff0; }
+.pong-namen-knoepfe { display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 12px; }
+.pong-abbrechen { background: none; border: 0; color: #aaa; text-decoration: underline; cursor: pointer; font: 15px "Courier New", monospace; }
 .pong-regeln { background: #000; border: 3px solid #0f0; margin: 26px 0; padding: 16px; }
 .pong-regeln h2 { color: #0f0; margin: 0 0 10px; }
 .pong-regeln li { margin: 6px 0; }
