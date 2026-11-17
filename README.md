@@ -23,7 +23,13 @@ Reine HTML/CSS/JS Seite, kein Build nötig. `index.html` doppelklicken = Vorscha
 
 ## Zusammenarbeit
 Wir arbeiten zu zweit daran (Besitzer plus ein Collaborator), beide auch mit Claude.
-Jeder darf direkt auf `main` pushen. Die Seite ist mit Netlify verbunden, jeder Push auf
-`main` geht automatisch live. Vorher immer `git pull` machen.
+Die Seite ist mit Netlify verbunden, jeder Push auf `main` geht automatisch live und
+kostet 15 Netlify Credits. Deshalb gilt seit dem 17.11.2026:
+
+* Änderungen werden auf dem Branch **`sammeln`** gesammelt (committen und pushen dorthin ist
+  jederzeit ok, das kostet nichts und beide sehen den Stand).
+* Auf `main` (also live) kommt alles erst, wenn jemand ausdrücklich **„push alle Änderungen“**
+  sagt. Dann wird `sammeln` in einem Rutsch nach `main` gepusht, das ist ein einziges Deploy.
+* Vorher immer den neuesten Stand holen (`git fetch origin`).
 
 Hinweise speziell für Claude stehen in [`CLAUDE.md`](CLAUDE.md).

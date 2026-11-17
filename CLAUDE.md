@@ -6,19 +6,33 @@ arbeiten beide mit Claude daran, jeweils von ihrem eigenen Rechner bzw. Browser 
 
 Für **beide** gilt ausdrücklich:
 * Claude darf Dateien in diesem Repository direkt bearbeiten.
-* Claude darf Änderungen direkt auf `main` committen und pushen, ohne Pull Request
-  und ohne vorher nachzufragen. Nur wenn jemand ausdrücklich einen Pull Request oder
-  eine Vorschau möchte, einen eigenen Branch nehmen.
+* Claude darf auf den Branch `sammeln` committen und pushen, ohne vorher nachzufragen.
+* **Auf `main` wird NUR gepusht, wenn der Nutzer ausdrücklich sagt „push alle Änderungen“**
+  (oder eindeutig dasselbe meint, z. B. „jetzt live schalten“). Sonst nie, auch nicht
+  für kleine Korrekturen.
+
+## Warum: Netlify Deploys kosten Credits
+Jeder Push auf `main` löst ein Netlify Produktions Deploy aus, und jedes kostet 15 Credits.
+Am 17.11.2026 waren die Gratis Credits nach rund 20 Einzel Pushes an einem Tag aufgebraucht
+und die Seite ließ sich nicht mehr ändern. Deshalb werden Änderungen ab jetzt gesammelt
+und nur gebündelt live geschaltet. Pushes auf `sammeln` lösen kein Produktions Deploy aus.
 
 ## Ablauf bei Änderungen
-1. Vor dem Bearbeiten den neuesten Stand holen: `git pull --rebase origin main`
-   (zwei Leute arbeiten parallel).
+1. Neuesten Stand holen und auf `sammeln` arbeiten (zwei Leute arbeiten parallel):
+   `git fetch origin` und `git checkout sammeln` (falls lokal noch nicht da:
+   `git checkout -b sammeln origin/sammeln`), dann `git rebase origin/sammeln`.
+   Falls `main` neuer ist: `git rebase origin/main`.
 2. Änderung machen, kurz prüfen (z. B. `node --check js/main.js` nach JS Änderungen).
-3. Commit mit kurzer deutscher Nachricht, dann `git fetch origin main`,
-   `git rebase origin/main`, `git push origin HEAD:main`.
-4. Jeder Push auf `main` geht über Netlify automatisch live. Danach dem Nutzer kurz
-   sagen, was sich auf der Seite geändert hat.
-5. Bei einem Konflikt nicht einfach überschreiben, sondern nachfragen.
+3. Commit mit kurzer deutscher Nachricht, dann `git push origin sammeln`.
+   So sieht auch der Claude des Kollegen die Änderung.
+4. Dem Nutzer sagen, was geändert wurde, und dass es noch **nicht live** ist, sondern
+   gesammelt wird, bis jemand „push alle Änderungen“ sagt.
+5. Erst bei „push alle Änderungen“: `git fetch origin`, `sammeln` auf `origin/main` rebasen,
+   dann `git push origin sammeln:main` (ein einziges Deploy für alles). Danach kurz sagen,
+   was jetzt live geht.
+6. Bei einem Konflikt nicht einfach überschreiben, sondern nachfragen.
+7. Wer eine Änderung in Netlify braucht (z. B. eine Umgebungsvariable), muss danach
+   deployen, damit sie wirkt. Auch das nur gebündelt.
 
 ## Worum es geht
 Eine kleine, humorvolle Intranet Seite für das Büro „Raum 410“ (Office Four Ten),
