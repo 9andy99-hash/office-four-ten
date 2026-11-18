@@ -3,7 +3,7 @@
 //   POST -> { name, tipp } neuen Tipp abgeben
 // Die Tipps liegen in Netlify Blobs (Store "ratespiel"), nicht im Repo.
 // Die richtige Lösung steht NICHT im (öffentlichen) Repo, sondern in der
-// Netlify Umgebungsvariable RATESPIEL_LOESUNG (z. B. 136).
+// Netlify Umgebungsvariable RATESPIEL_LOESUNG.
 import { getStore } from "@netlify/blobs";
 import { ansicht, neuerTipp } from "../ratespiel-logik.mjs";
 

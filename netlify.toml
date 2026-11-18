@@ -1,0 +1,39 @@
+# Interne Dateien (Server Code, Doku, Paketlisten) nicht als Webseite ausliefern.
+# Netlify veröffentlicht sonst den ganzen Repo Ordner, z. B. /netlify/functions/ratespiel.mjs.
+# Die Netlify Functions selbst (/api/...) funktionieren weiterhin.
+
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/node_modules/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/README.md"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/CLAUDE.md"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package.json"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package-lock.json"
+  to = "/404"
+  status = 404
+  force = true

@@ -9,7 +9,7 @@ export function normName(roh) {
   return roh.replace(/[\u0000-\u001f\u007f<>]/g, "").replace(/\s+/g, " ").trim().slice(0, 30);
 }
 
-// Erlaubt "136", "136,50", "136.5", "136 €"
+// Erlaubt "99", "99,50", "99.5", "99 €"
 export function parseTipp(roh) {
   if (typeof roh === "number") roh = String(roh);
   if (typeof roh !== "string") return null;

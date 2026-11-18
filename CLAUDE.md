@@ -57,6 +57,7 @@ Reines HTML/CSS/JS, kein Build. Ausnahme: eine Netlify Function fürs Ratespiel.
 | `data/games.js` | Ranglisten (`window.GAMES`), werden automatisch sortiert |
 | `ratespiel.html` + `js/ratespiel.js` | Ratespiel (Kosten der Pflanzenexpedition). Namen sofort sichtbar, Tipps erst ab Fr 20.11.2026 20:00 Uhr, dann Gewinner mit Konfetti |
 | `netlify/functions/ratespiel.mjs` | Netlify Function `/api/ratespiel`, speichert Tipps in Netlify Blobs. Logik in `netlify/ratespiel-logik.mjs` (mit Node testbar). Die Lösung steht absichtlich nicht im öffentlichen Repo, sondern in der Netlify Umgebungsvariable `RATESPIEL_LOESUNG` |
+| `netlify.toml` | Sperrt interne Dateien (`/netlify/*`, `README.md`, `CLAUDE.md`, `package*.json`) für Besucher der Webseite. Keine Lösungen oder Beispielwerte dafür in Kommentare schreiben, das Repo ist öffentlich |
 | `package.json` | Nur für `@netlify/blobs` (Function). Kein Build für die Seite selbst |
 | `img/` | Bilder |
 
