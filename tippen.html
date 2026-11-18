@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Office 410 – Tippspiel</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌨️</text></svg>">
+</head>
+<body class="games">
+  <header class="topbar">
+    <a class="logo" href="index.html">OFFICE 410 <small>| Corporate Communications</small></a>
+    <nav>
+      <a href="index.html">Start</a>
+      <a href="events.html">Events</a>
+      <a href="news.html">Office News</a>
+      <a href="games.html" class="aktiv">Office Games</a>
+      <a href="kommentare.html">Kommentare</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <p class="brotkrumen"><a href="games.html">Office Games</a> › Tippspiel</p>
+    <h1 class="pong-titel">10-FINGER-TIPPSPIEL</h1>
+    <p class="kom-intro">60 Sekunden, so viele Wörter wie möglich. Die Zeit läuft ab dem ersten Tastendruck. Nach jedem Wort die <b>Leertaste</b> drücken.</p>
+
+    <section class="tipp-feld">
+      <div class="tipp-woerter" id="tipp-woerter" aria-live="off"><div id="tipp-zeilen"></div></div>
+      <div class="tipp-leiste">
+        <input type="text" id="tipp-eingabe" class="tipp-eingabe" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Hier tippen">
+        <span class="tipp-uhr" id="tipp-uhr">1:00</span>
+        <button type="button" class="tipp-neu" id="tipp-neu" title="Neu starten">↻</button>
+      </div>
+    </section>
+
+    <section class="rate-box tipp-ergebnis" id="tipp-ergebnis" hidden>
+      <h2>▶ Ergebnis</h2>
+      <p class="tipp-wpm"><b id="tipp-wpm">0</b> WPM</p>
+      <ul class="tipp-zahlen">
+        <li>Anschläge <b id="tipp-anschlaege">0</b></li>
+        <li>Genauigkeit <b id="tipp-genau">0 %</b></li>
+        <li>Richtige Wörter <b id="tipp-richtig" class="ok">0</b></li>
+        <li>Falsche Wörter <b id="tipp-falsch" class="falsch">0</b></li>
+      </ul>
+      <form id="tipp-formular" class="tipp-formular" autocomplete="off">
+        <label>Name für die Bestenliste
+          <input type="text" name="name" maxlength="20" required placeholder="z. B. JJ">
+        </label>
+        <button type="submit" class="rate-knopf">Eintragen 🏆</button>
+        <button type="button" class="rate-knopf tipp-nochmal" id="tipp-nochmal">Nochmal ↻</button>
+      </form>
+      <p class="rate-meldung" id="tipp-meldung" role="status"></p>
+    </section>
+
+    <section class="rangliste">
+      <h2>▶ Bestenliste (beste Runde pro Name)</h2>
+      <table id="tipp-bestenliste"><tr><td>Wird geladen …</td></tr></table>
+    </section>
+
+    <section class="pong-regeln">
+      <h2>▶ Regeln</h2>
+      <ul>
+        <li>WPM = Wörter pro Minute. Gezählt werden die Anschläge richtiger Wörter (mit Leertaste), geteilt durch 5.</li>
+        <li>Falsch getippte Wörter zählen nicht. Zurück zu einem fertigen Wort geht nicht.</li>
+        <li>Nach jeder Runde kannst du dich mit einem Namen eintragen. In der Bestenliste steht pro Name nur die beste Runde.</li>
+        <li>Mogeln mit Copy &amp; Paste wird von der Geschäftsleitung nicht kontrolliert, aber moralisch verurteilt.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="fuss">Alle Ergebnisse ohne Gewähr. Tastaturen werden nicht erstattet.</footer>
+
+  <script src="js/tippen.js"></script>
+</body>
+</html>

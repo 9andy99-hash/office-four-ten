@@ -121,6 +121,23 @@
       .catch(function () { pongTabelle.innerHTML = "<tr><td>Rangliste gerade nicht erreichbar.</td></tr>"; });
   }
 
+  var tippTabelle = document.getElementById("tippen-uebersicht");
+  if (tippTabelle) {
+    fetch("/api/tippen", { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        tippTabelle.innerHTML = "";
+        if (!d.bestenliste.length) { tippTabelle.innerHTML = "<tr><td>Noch keine Einträge.</td></tr>"; return; }
+        d.bestenliste.slice(0, 10).forEach(function (e, i) {
+          var tr = tippTabelle.insertRow();
+          tr.insertCell().textContent = ["🥇", "🥈", "🥉"][i] || (i + 1) + ".";
+          tr.insertCell().textContent = e.name;
+          tr.insertCell().textContent = e.wpm + " WPM";
+        });
+      })
+      .catch(function () { tippTabelle.innerHTML = "<tr><td>Bestenliste gerade nicht erreichbar.</td></tr>"; });
+  }
+
   // ---------- Ballons (Party-Seite) ----------
   var party = document.body.classList.contains("party");
   if (party && !matchMedia("(prefers-reduced-motion: reduce)").matches) {

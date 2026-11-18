@@ -301,6 +301,51 @@ body.games { background: #111 repeating-linear-gradient(90deg, #1a1a1a 0 2px, tr
 .party-ratespiel:hover { transform: rotate(-1deg) scale(1.03); }
 .party-foto { display: block; width: min(100%, 420px); height: auto; margin: 16px auto; border: 4px solid #ff0; transform: rotate(-3deg); }
 
+/* ============ Kommentare ============ */
+.kom-intro { text-align: center; color: #ccc; font-size: 17px; margin: 0 auto 10px; max-width: 640px; }
+.kom-liste { list-style: none; margin: 0; padding: 0; }
+.kom-liste li { padding: 10px 4px; border-bottom: 1px dashed #333; }
+.kom-liste li b { color: #ff0; font-size: 17px; }
+.kom-liste li p { margin: 4px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 17px; line-height: 1.45; }
+.kom-liste .leer { color: #888; }
+.kom-formular { display: grid; gap: 12px; }
+.kom-formular label { display: flex; flex-direction: column; gap: 4px; color: #aaa; font-size: 14px; }
+.kom-formular input, .kom-formular textarea { font: 18px "Courier New", monospace; padding: 10px; background: #111; color: #fff; border: 2px solid #ff0; resize: vertical; }
+.kom-formular input:focus, .kom-formular textarea:focus { outline: 3px solid #f0f; }
+.kom-unten { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.kom-falle { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ============ Tippspiel ============ */
+.tipp-feld { background: #000; border: 3px solid #ff0; box-shadow: 6px 6px 0 #f0f; padding: 16px; margin: 20px 0; }
+.tipp-woerter { height: 3.4em; overflow: hidden; font: 28px/1.7 "Courier New", monospace; background: #fff; color: #222; padding: 0 12px; cursor: text; }
+#tipp-zeilen { position: relative; transition: transform .15s; }
+#tipp-zeilen span { padding: 0 2px; border-radius: 3px; }
+#tipp-zeilen .aktuell { background: #ddd; }
+#tipp-zeilen .aktuell.fehler { background: #ff2d55; color: #fff; }
+#tipp-zeilen .ok { color: #0a8a2a; }
+#tipp-zeilen .falsch { color: #d0002a; text-decoration: line-through; }
+.tipp-woerter.vorbei { opacity: .5; }
+.tipp-leiste { display: flex; gap: 10px; margin-top: 12px; align-items: stretch; }
+.tipp-eingabe { flex: 1; min-width: 0; font: 26px "Courier New", monospace; padding: 8px 12px; background: #111; color: #fff; border: 2px solid #0f0; }
+.tipp-eingabe:focus { outline: 3px solid #f0f; }
+.tipp-uhr { font: 36px "Bangers", Impact, sans-serif; letter-spacing: 1px; color: #ff0; background: #222; padding: 4px 14px; min-width: 80px; text-align: center; }
+.tipp-uhr.knapp { color: #ff2d55; }
+.tipp-neu { font-size: 28px; background: #222; color: #0f0; border: 2px solid #0f0; padding: 0 14px; cursor: pointer; }
+.tipp-neu:hover { background: #0f0; color: #000; }
+.tipp-wpm { text-align: center; margin: 0; font-size: 24px; color: #0f0; }
+.tipp-wpm b { font: 80px/1 "Bangers", Impact, sans-serif; color: #ff0; letter-spacing: 2px; text-shadow: 4px 4px 0 #f0f; }
+.tipp-zahlen { list-style: none; padding: 0; margin: 14px auto; max-width: 420px; font-size: 18px; }
+.tipp-zahlen li { display: flex; justify-content: space-between; padding: 5px 4px; border-bottom: 1px dashed #333; }
+.tipp-zahlen b { color: #fff; }
+.tipp-zahlen .ok { color: #0f0; }
+.tipp-zahlen .falsch { color: #ff2d55; }
+.tipp-formular { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; justify-content: center; margin-top: 10px; }
+.tipp-formular label { display: flex; flex-direction: column; gap: 4px; color: #aaa; font-size: 14px; }
+.tipp-formular input { font: 20px "Courier New", monospace; padding: 10px; background: #111; color: #fff; border: 2px solid #ff0; }
+.tipp-nochmal { background: #222; color: #0f0; }
+.rangliste tr.markiert td { background: #1a1a00; font-weight: bold; }
+.rangliste td:nth-child(3):not(:last-child) { color: #888; text-align: right; }
+
 /* ============ Handy ============ */
 @media (max-width: 640px) {
   .memo { padding: 20px 16px; }
@@ -313,6 +358,9 @@ body.games { background: #111 repeating-linear-gradient(90deg, #1a1a1a 0 2px, tr
   .rate-intro { grid-template-columns: 1fr; }
   .rate-intro img { max-width: 260px; margin: 0 auto; }
   #rate-formular { grid-template-columns: 1fr; }
+  .tipp-woerter { font-size: 21px; }
+  .tipp-eingabe { font-size: 20px; }
+  .tipp-uhr { font-size: 28px; min-width: 64px; }
   .meldung figure { margin: 14px 10px; }
 }
 @media (prefers-reduced-motion: reduce) {

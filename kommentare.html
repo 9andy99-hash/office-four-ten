@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Office 410 – Kommentare</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>">
+</head>
+<body class="games">
+  <header class="topbar">
+    <a class="logo" href="index.html">OFFICE 410 <small>| Corporate Communications</small></a>
+    <nav>
+      <a href="index.html">Start</a>
+      <a href="events.html">Events</a>
+      <a href="news.html">Office News</a>
+      <a href="games.html">Office Games</a>
+      <a href="kommentare.html" class="aktiv">Kommentare</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <h1 class="pong-titel">KOMMENTARE</h1>
+    <p class="kom-intro">Lob, Kritik, Grüße an die Pflanzen: Hier darf jede und jeder ihren Senf dazugeben. Die Geschäftsleitung liest mit.</p>
+
+    <section class="rate-box">
+      <h2>▶ Alle Kommentare <span id="kom-anzahl"></span></h2>
+      <ol class="kom-liste" id="kom-liste"><li class="leer">Wird geladen …</li></ol>
+    </section>
+
+    <section class="rate-box">
+      <h2>▶ Kommentar schreiben</h2>
+      <form id="kom-formular" class="kom-formular" autocomplete="off">
+        <label>Dein Name
+          <input type="text" name="name" maxlength="30" required placeholder="z. B. Kevin aus 412">
+        </label>
+        <label>Dein Kommentar
+          <textarea name="text" maxlength="500" rows="4" required placeholder="Was wolltest du der Geschäftsleitung schon immer mal sagen?"></textarea>
+        </label>
+        <label class="kom-falle" aria-hidden="true">Webseite <input type="text" name="webseite" tabindex="-1" autocomplete="off"></label>
+        <div class="kom-unten">
+          <span class="rate-hinweis" id="kom-zeichen">0 / 500</span>
+          <button type="submit" class="rate-knopf">Absenden 💬</button>
+        </div>
+      </form>
+      <p class="rate-meldung" id="kom-meldung" role="status"></p>
+      <p class="rate-hinweis">Alle Kommentare sind sofort für alle sichtbar. Bitte nett bleiben, die Pflanzen lesen mit.</p>
+    </section>
+  </main>
+
+  <footer class="fuss">Kommentare geben nicht zwingend die Meinung der Geschäftsleitung wieder.</footer>
+
+  <script src="js/kommentare.js"></script>
+</body>
+</html>
