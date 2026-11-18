@@ -11,6 +11,22 @@
 // ============================================================
 window.NEWS = [
   {
+    datum: "Mi, 18.11.2026",
+    rubrik: "AUSLANDSKORRESPONDENZ",
+    titel: "Live aus Heidelberg: Im Regen der Wehmut",
+    untertitel: "Auslandskorrespondent Andy trifft Ex IBT Mitarbeiterin Heli zum Exklusivinterview, nachdem er knapp ein Institutsmeeting überlebt",
+    text: [
+      "Der Arbeitstag unseres Auslandskorrespondenten begann mit einer Belastungsprobe der Kategorie „schwer“. Das Institutsmeeting überschritt seine vorgesehene Dauer erheblich, nachdem ein zusätzlicher, zuvor nirgends angekündigter Tagesordnungspunkt eingebracht wurde.",
+      "Gegenstand der Debatte war die Frage, wie sichergestellt werden kann, dass herausgegebene Laptops und sonstige elektronische Endgeräte auch tatsächlich wieder zurückkehren. Ein Thema von existenzieller Tragweite, das sich spontan und ohne mehrwöchige Vorbereitung kaum regeln lässt. Es wurde zwar eine Lösung ausgearbeitet, ob diese wirklich tragbar ist, bleibt jedoch abzuwarten.",
+      "Zur Wiederherstellung der kognitiven Einsatzfähigkeit verordnete sich unser Korrespondent eine kleine Stärkung sowie mehrere tiefe Atemzüge frisch O₂ angereicherter Büroluft aus eigener Produktion (siehe Bericht „Operation Grüne Lunge“). Die Pflanzen leisteten damit ihren ersten nachweisbaren Beitrag zur Leistungseffizienz von Raum 410. Mit freiem Kopf trat er die Reise ins ferne Heidelberg an.",
+      "Heli, ehemalige IBT Mitarbeiterin und heute in den dortigen Laboren tätig, erwies sich als so großzügig, unserem Newsportal ein Exklusivinterview zu geben. Das Gespräch fand unter streng journalistischen Bedingungen in einem Café statt. Erst nach dem gemeinsamen Verzehr mehrerer Kuchenköstlichkeiten (Anzahl unbekannt, Quittung unauffindbar) war die Interviewpartnerin zu einer Aussage bereit. Ihre Arbeit in den Laboren befinde sich derzeit in einer höchst instabilen, fast schon kippenden Lage.",
+      { bild: "img/heidelberg-410.webp", unterschrift: "Abb. 1. Andy und Heli bekennen sich per Handzeichen zu Raum 410. Witterung erneut suboptimal." },
+      "Besonders schwer wiegt auf dem Herzen unseres Korrespondenten jedoch das Schicksal der aktuellen Masterandin, deren Qualen er vor Ort aus nächster Nähe dokumentieren musste. Einzelheiten sind dieser Redaktion bekannt, werden aus Rücksicht auf zartbesaitete Leserinnen und Leser jedoch nicht veröffentlicht.",
+      "In tief nachdenklicher Stimmung befindet sich unser Mann im Ausland nun auf dem Heimweg ins geliebte Karlsruhe, um sich zu erholen und morgen erneut einen Arbeitstag zu bestreiten. Trost spendet ihm vor allem eines, nämlich der Blick auf den kommenden Freitagabend.",
+      { text: "", link: "events.html", linktext: "Zur Office Party am Freitag, 20.11. um 18 Uhr →" }
+    ]
+  },
+  {
     datum: "Mo, 16.11.2026",
     rubrik: "EXPEDITIONSBERICHT",
     titel: "Operation Grüne Lunge: Die IKEA Expedition",
