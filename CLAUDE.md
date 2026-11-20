@@ -55,8 +55,8 @@ Reines HTML/CSS/JS, kein Build. Ausnahme: eine Netlify Function fürs Ratespiel.
 | `js/main.js` | Countdown, Uhr, News und Ranglisten rendern, Ballons, Sticker der Startseite |
 | `data/news.js` | News Beiträge (`window.NEWS`), neuer Beitrag oben einfügen |
 | `data/games.js` | Ranglisten (`window.GAMES`), werden automatisch sortiert |
-| `ratespiel.html` + `js/ratespiel.js` | Ratespiel (Kosten der Pflanzenexpedition). Namen sofort sichtbar, Tipps erst ab Fr 20.11.2026 20:00 Uhr, dann Gewinner mit Konfetti |
-| `netlify/functions/ratespiel.mjs` | Netlify Function `/api/ratespiel`, speichert Tipps in Netlify Blobs. Logik in `netlify/ratespiel-logik.mjs` (mit Node testbar). Die Lösung steht absichtlich nicht im öffentlichen Repo, sondern in der Netlify Umgebungsvariable `RATESPIEL_LOESUNG` |
+| `ratespiel.html` + `js/ratespiel.js` | Ratespiel (Kosten der Pflanzenexpedition). Namen sofort sichtbar, Tipps erst ab Fr 20.11.2026 19:00 Uhr. Großer Vollbild Countdown mit WebAudio Sound (letzte 60 s automatisch), dann Auflösungsshow: Preis, Gewinner, Konfetti. Testlauf mit `ratespiel.html?test=20` (Sekunden) |
+| `netlify/functions/ratespiel.mjs` | Netlify Function `/api/ratespiel`, speichert Tipps in Netlify Blobs. Logik in `netlify/ratespiel-logik.mjs` (mit Node testbar). Die Lösung (136,56 €) steht dort als `LOESUNG`, auf Wunsch der Nutzer öffentlich |
 | `kommentare.html` + `js/kommentare.js` | Kommentare (eigener Tab in der Navigation). Name + Text, chronologisch (ältester zuerst), ohne Datum/Uhrzeit. Function `/api/kommentare` (`netlify/functions/kommentare.mjs`, Logik in `netlify/kommentare-logik.mjs`), gespeichert in Netlify Blobs |
 | `tippen.html` + `js/tippen.js` | 10 Finger Tippspiel (unter Office Games), 60 Sekunden, WPM = richtige Anschläge / 5. Nach jeder Runde Name eintragen, Bestenliste zeigt die beste Runde pro Name. Function `/api/tippen` (`netlify/functions/tippen.mjs`, Logik in `netlify/tippen-logik.mjs`) |
 | `netlify.toml` | Sperrt interne Dateien (`/netlify/*`, `README.md`, `CLAUDE.md`, `package*.json`) für Besucher der Webseite. Keine Lösungen oder Beispielwerte dafür in Kommentare schreiben, das Repo ist öffentlich |

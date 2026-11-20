@@ -1,11 +1,10 @@
 // Netlify Function für das Ratespiel. Erreichbar unter /api/ratespiel
-//   GET  -> vor Fr 20 Uhr nur Teilnehmernamen, danach alle Tipps und Gewinner
+//   GET  -> vor Fr 19 Uhr nur Teilnehmernamen, danach alle Tipps und Gewinner
 //   POST -> { name, tipp } neuen Tipp abgeben
 // Die Tipps liegen in Netlify Blobs (Store "ratespiel"), nicht im Repo.
-// Die richtige Lösung steht NICHT im (öffentlichen) Repo, sondern in der
-// Netlify Umgebungsvariable RATESPIEL_LOESUNG.
+// Die Lösung steht als LOESUNG in netlify/ratespiel-logik.mjs.
 import { getStore } from "@netlify/blobs";
-import { ansicht, neuerTipp } from "../ratespiel-logik.mjs";
+import { ansicht, neuerTipp, LOESUNG } from "../ratespiel-logik.mjs";
 
 const json = (daten, status = 200) =>
   new Response(JSON.stringify(daten), {
@@ -22,8 +21,7 @@ async function alleEintraege(store) {
 export default async (req) => {
   const store = getStore({ name: "ratespiel", consistency: "strong" });
   const jetzt = Date.now();
-  const loesungRoh = (typeof Netlify !== "undefined" ? Netlify.env.get("RATESPIEL_LOESUNG") : process.env.RATESPIEL_LOESUNG) || "";
-  const loesung = loesungRoh.trim() === "" ? null : Number(loesungRoh.replace(",", "."));
+  const loesung = LOESUNG;
 
   try {
     if (req.method === "GET") {

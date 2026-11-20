@@ -1,7 +1,9 @@
 // Reine Spiellogik des Ratespiels (ohne Netlify), damit sie mit Node testbar ist.
 
-// Fr, 20.11.2026, 20:00 Uhr deutscher Zeit
-export const AUFLOESUNG = Date.parse("2026-11-20T20:00:00+01:00");
+// Fr, 20.11.2026, 19:00 Uhr deutscher Zeit
+export const AUFLOESUNG = Date.parse("2026-11-20T19:00:00+01:00");
+// Der echte Betrag der Pflanzenexpedition (wird ab der Auflösung angezeigt)
+export const LOESUNG = 136.56;
 export const MAX_TEILNEHMER = 300;
 
 export function normName(roh) {
