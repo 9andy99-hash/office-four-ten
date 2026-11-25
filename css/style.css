@@ -421,3 +421,11 @@ body.games { background: #111 repeating-linear-gradient(90deg, #1a1a1a 0 2px, tr
   .show::before, .show-zahl.pop, .show.wackeln, .show.knall .show-zahl, .show.trommel .show-zahl, .show.preis .show-zahl, .show.sieger .show-zahl, .show-sound.aus { animation: none; }
   .show.blitz::after { display: none; }
 }
+
+/* Sprachumschalter (alle Seiten) und Google Translate Leiste ausblenden */
+.sprache-knopf { font: bold 13px Arial, Helvetica, sans-serif; letter-spacing: 1px; background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, .6); border-radius: 2px; padding: 5px 9px; cursor: pointer; }
+.sprache-knopf:hover { background: #fff; color: #0b2a4a; }
+.sprache-knopf.frei { position: fixed; top: 10px; right: 10px; z-index: 9500; background: #0b2a4a; }
+.goog-te-banner-frame, .skiptranslate > iframe, #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+body { top: 0 !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
