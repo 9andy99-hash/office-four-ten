@@ -11,6 +11,20 @@
 // ============================================================
 window.NEWS = [
   {
+    datum: "Mi, 25.11.2026",
+    rubrik: "GESELLSCHAFT",
+    titel: "Office Party 410: Exklusiver Kreis, maximale Rache",
+    untertitel: "Sechs Auserwählte feiern die Begrünung von Raum 410 und spielen „Flip 7 With a Vengeance“",
+    text: [
+      "Am Freitag, den 20.11.2026, öffnete Raum 410 pünktlich um 18 Uhr seine frisch begrünten Pforten zur ersten offiziellen Office Party. Die Gästeliste erwies sich als kurz, aber hochkarätig. Mit genau sechs Teilnehmenden war das Verhältnis von Pflanzen zu Personen so günstig wie nie zuvor.",
+      "Die CaMo Gruppe war an diesem Abend dienstlich anderweitig unterwegs. Die Ehre der Anwesenheit fiel somit vollständig der BIMS Gruppe zu, deren Mitglieder sich als außerordentlich feierfähig erwiesen.",
+      "Höhepunkt des Abends war das Kartenspiel „Flip 7 With a Vengeance“. Der Titel hielt, was er versprach. Freundschaften wurden geprüft, Allianzen geschmiedet und umgehend wieder verraten. Den Sieg holte sich M., und zwar so eindeutig, dass auf die Protokollierung der Punkte in der letzten Runde verzichtet wurde. Die Redaktion wertet dies als Sieg durch technisches K.o.",
+      "Um 19 Uhr folgte die Auflösung des großen Ratespiels. Die Pflanzenexpedition hatte 136,56 € gekostet. Die beste Schätzung kam von „Joni (der echte) aus 411“ mit 127,80 €, nur 8,76 € daneben. Wer der unechte Joni ist, bleibt Gegenstand laufender Ermittlungen.",
+      { text: "Alle Tipps im Überblick:", link: "ratespiel.html", linktext: "Zum Ratespiel →" },
+      "Die Redaktion zieht ein eindeutiges Fazit: sehr witzig, sehr gelungen, Wiederholung dringend empfohlen."
+    ]
+  },
+  {
     datum: "Mi, 18.11.2026",
     rubrik: "AUSLANDSKORRESPONDENZ",
     titel: "Live aus Heidelberg: Im Regen der Wehmut",
