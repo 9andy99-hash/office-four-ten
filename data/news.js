@@ -11,6 +11,22 @@
 // ============================================================
 window.NEWS = [
   {
+    datum: "Fr, 27.11.2026",
+    rubrik: "GESELLSCHAFT",
+    titel: "Geburtstag im IBT: Karottenkuchen, Kleiderordnung und Barsche",
+    untertitel: "Andy versorgt das Institut mit Kuchen, präsentiert neue Körperkunst und schließt den Tag mit Frischfisch ab",
+    bild: "img/geburtstag-andy-kuchen.webp",
+    bildAlt: "Andy im Tanktop schneidet im IBT Pausenraum den Karottenkuchen auf",
+    text: [
+      "Am gestrigen Donnerstag feierte Andy Geburtstag. Er hielt sich dabei streng an die geltende Kuchenverordnung und lieferte einen Karottenkuchen in Großraumformat im IBT Pausenraum an. Eine unabhängige Prüfkommission hat den Kuchen eingehend untersucht und ihn einstimmig als „sehr lecker“ eingestuft, die höchste Bewertungsstufe der Kommission. Weitere Nachproben wurden beantragt, sind nach aktuellem Füllstand der Auflaufform jedoch nur noch eingeschränkt möglich.",
+      { bild: "img/geburtstag-kuchen-oben.webp", unterschrift: "Abb. 1. Das Prüfobjekt kurz nach Beginn der Untersuchung. Die Schnittführung folgt keinem erkennbaren System." },
+      "Zur Kuchenausgabe erschien das Geburtstagskind im Tanktop und präsentierte dabei stolz sein neues Tattoo. Ob dieser sportliche, körperbetonte Kleidungsstil den Anforderungen eines seriösen Büroumfelds entspricht, prüft die Geschäftsleitung derzeit. Eine abschließende Bewertung steht aus. Man sei, so heißt es, „unsicher“.",
+      "Mit dem Kuchen war das Tagesprogramm allerdings noch lange nicht abgeschlossen. Am Abend brach Andy noch zum Angeln auf. Mehrere Barsche wurden gefangen und noch am selben Abend verköstigt. Andy ist damit der erste Mitarbeitende des Instituts, der an seinem Geburtstag eine vollständige Versorgungskette vom Vormittagskuchen bis zum Abendessen betreibt. Eine Stellungnahme der Barsche liegt der Redaktion nicht vor.",
+      { bild: "img/geburtstag-andy-abend.webp", unterschrift: "Abb. 2. Nach erfolgreicher Barsch-Operation: Andy (rechts) mit seinem Wohnungsmenschen. Die Bedeutung der Handzeichen konnte die Redaktion bis Redaktionsschluss nicht abschließend klären." },
+      "Raum 410 gratuliert nachträglich herzlich zum Geburtstag! 🎂🎣"
+    ]
+  },
+  {
     datum: "Mi, 25.11.2026",
     rubrik: "GESELLSCHAFT",
     titel: "Office Party 410: Exklusiver Kreis, maximale Rache",
