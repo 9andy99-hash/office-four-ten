@@ -33,6 +33,18 @@
   }
 
   // ---------- News rendern ----------
+  // ---------- Laufbänder automatisch aus den neuesten News ----------
+  if (window.NEWS) {
+    var meldungen = window.NEWS.slice(0, 5).map(function (n) { return n.titel.toUpperCase(); });
+    (window.TICKER_EXTRA || []).forEach(function (t, i) { meldungen.splice(2 * i + 2, 0, t); });
+    var lauftext = "+++ " + meldungen.join(" +++ ") + " +++";
+    document.querySelectorAll(".ticker .lauf span, .laufband span").forEach(function (sp) {
+      sp.textContent = lauftext;
+      // Tempo gleich halten, egal wie lang der Text ist (ca. 7 Zeichen pro Sekunde)
+      sp.style.animationDuration = Math.max(20, Math.round(lauftext.length / 7)) + "s";
+    });
+  }
+
   var newsBox = document.getElementById("news-liste");
   if (newsBox && window.NEWS) {
     var bildElement = function (src, alt) {

@@ -9,6 +9,15 @@
 //    { bilder: ["img/a.webp", "img/b.webp"], unterschrift }  -> Bilder nebeneinander
 //    { text: "...", link: "seite.html", linktext: "..." }    -> Absatz mit Link
 // ============================================================
+
+// Laufbänder (Office News unten + Startseite) bauen sich automatisch aus den
+// Titeln der neuesten Beiträge. Diese Sprüche werden zusätzlich eingestreut:
+window.TICKER_EXTRA = [
+  "STRICHMÄNNCHEN HÄLT WEITERHIN STUHL",
+  "DAX UNVERÄNDERT, KAFFEEVORRAT KRITISCH",
+  "KAFFEEMASCHINE LEBT NOCH"
+];
+
 window.NEWS = [
   {
     datum: "Fr, 27.11.2026",

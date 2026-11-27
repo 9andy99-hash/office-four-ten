@@ -53,7 +53,7 @@ Reines HTML/CSS/JS, kein Build. Ausnahme: eine Netlify Function fürs Ratespiel.
 | `js/vendor/peerjs.min.js` | PeerJS 1.5.4 (MIT), lokal abgelegt statt CDN |
 | `css/style.css` | Alle Styles, nach Seiten in Abschnitte gegliedert |
 | `js/main.js` | Countdown, Uhr, News und Ranglisten rendern, Ballons, Sticker der Startseite |
-| `data/news.js` | News Beiträge (`window.NEWS`), neuer Beitrag oben einfügen |
+| `data/news.js` | News Beiträge (`window.NEWS`), neuer Beitrag oben einfügen. Die Laufbänder (News unten, Startseite) bauen sich in `js/main.js` automatisch aus den 5 neuesten Titeln plus `window.TICKER_EXTRA` |
 | `data/games.js` | Ranglisten (`window.GAMES`), werden automatisch sortiert |
 | `ratespiel.html` + `js/ratespiel.js` | Ratespiel (Kosten der Pflanzenexpedition). Namen sofort sichtbar, Tipps erst ab Fr 20.11.2026 19:00 Uhr. Großer Vollbild Countdown mit WebAudio Sound (letzte 60 s automatisch), dann Auflösungsshow: Preis, Gewinner, Konfetti. Testlauf mit `ratespiel.html?test=20` (Sekunden) |
 | `netlify/functions/ratespiel.mjs` | Netlify Function `/api/ratespiel`, speichert Tipps in Netlify Blobs. Logik in `netlify/ratespiel-logik.mjs` (mit Node testbar). Die Lösung (136,56 €) steht dort als `LOESUNG`, auf Wunsch der Nutzer öffentlich |
